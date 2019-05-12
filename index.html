@@ -9,16 +9,16 @@
 <body>
     <div class="wrapper">
         <header class="header">
-            <div class="header-container">
+            <div class="header-container container-fullwidth">
                 <div class="header-container-row grid-row">
-                    <div class="header-container-column grid-column">
+                    <div class="header-container-button-column grid-column">
                         <div class="header-container-button">
                             <button>
                                 Create new note
                             </button>
                         </div>
                     </div>
-                    <div class="header-container-column grid-column">
+                    <div class="header-container-dropdown-column grid-column">
                         <div class="header-container-dropdown">
                             <select>
                                 <option>Black-white-style</option>
@@ -26,9 +26,35 @@
                             </select>
                         </div>
                     </div>
-                </div>>
+                </div>
             </div>
         </header>
+        <div class="content container-fullwidth">
+            <div class="options-container">
+                <div class="options-container-row grid-row">
+                    <div class="options-container-order-column grid-column">
+                        <div class="options-container-order-items">
+                            <div class="options-container-order-item">
+                                By finish Date
+                            </div>
+                            <div class="options-container-order-item">
+                                By created Date
+                            </div>
+                            <div class="options-container-order-item">
+                                By Importance
+                            </div>
+                        </div>
+                    </div>
+                    <div class="options-container-filter-column grid-column">
+                        <div class="options-container-filter-items">
+                            <div class="options-container-filter-item">
+                                Show finished
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
