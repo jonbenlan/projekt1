@@ -1,0 +1,21 @@
+.overview {
+    padding: 2rem;
+}
+
+.header-container-row {
+    justify-content: space-between;
+}
+
+.options-container-row {
+    justify-content: space-between;
+}
+
+.options-container-order-column {
+    flex: 0 0 80%;
+}
+.options-container-filter-column {
+    flex: 0 0 20%;
+}
+.options-container-order-item {
+    flex: 0 0 33%;
+}
