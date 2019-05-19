@@ -9,13 +9,3 @@
 .row-gutter {
     margin: 2rem 0;
 }
-
-.border-black {
-    border: 1px solid black;
-}
-
-.block-button {
-    padding: 2rem 0;
-}
-
-@TODO: border black is a class not connected to grid. either rename file or ... well what?

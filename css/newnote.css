@@ -1,3 +1,7 @@
+.grid-row {
+    margin-bottom: 1rem;
+}
+
 .note-content-label {
     flex: 0 0 20%;
 }
@@ -5,3 +9,26 @@
 .note-content-input {
     flex: 0 0 60%;
 }
+
+.note-controls-row {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.note-controls-item-upper {
+    flex: 0 0 100%;
+    margin-bottom: 1rem;
+}
+
+.note-controls-item-lower {
+    flex: 0 0 15%;
+}
+
+input[type="checkbox"] {
+    opacity: 0;
+    width: auto;
+}
+
+/*.note-content-importance .note-content-input * {
+    display: inline-block;
+}*/

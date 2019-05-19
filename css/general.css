@@ -1,0 +1,25 @@
+button:focus {
+    background-color: cyan;
+}
+
+input, textarea {
+    width: 100%;
+}
+
+
+.border-black {
+    border: 1px solid black;
+}
+
+.button-large {
+    padding: 2rem 0;
+}
+.button-standard, button {
+    width: 100%;
+    padding: .5rem;
+    box-shadow: 0 2px 2px black;
+}
+
+.importance {
+    
+}

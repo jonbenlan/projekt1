@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="css/grid.css">
-    <link rel="stylesheet" type="text/css" href="css/tags.css">
+    <link rel="stylesheet" type="text/css" href="css/general.css">
     <link rel="stylesheet" type="text/css" href="css/newnote.css">
 </head>
 <body>
@@ -32,10 +32,19 @@
                     </div>
                     <div class="note-content-importance grid-row">
                         <div class="note-content-label">
-                            <label>Wichtigkeit</label>
+                            Wichtigkeit
                         </div>
                         <div class="note-content-input">
-                            <input>?
+                                <label for="1">&#9889;</label>
+                                <input type="checkbox" name="1">
+                                <label for="2">&#9889;</label>
+                                <input type="checkbox" name="2" value="&#9889;">
+                                <label for="3">&#9889;</label>
+                                <input type="checkbox"  name="3">
+                                <label for="4">&#9889;</label>
+                                <input type="checkbox" name="4">
+                                <label for="5">&#9889;</label>
+                                <input type="checkbox" name="5">
                         </div>
                     </div>
                     <div class="note-content-date grid-row">
@@ -47,13 +56,15 @@
                         Datepicker
                         </div>
                     </div>
-                    <div class="note-controls grid-row">
+                    <div class="note-controls">
                         <form action="overview.html">
-                            <div class="note-controls-button-save">
-                                <input class="border-black" type="submit" value="SPeichern">
-                            </div>
-                            <div class="note-controls-button-cancel">
-                                <input class="border-black" type="submit" value="Cancel">
+                            <div class="note-controls-row grid-row">
+                                <div class="note-controls-item-upper">
+                                    <input class="button-standard border-black" type="submit" value="SPeichern">
+                                </div>
+                                <div class="note-controls-item-lower">
+                                    <input class="button-standard border-black" type="submit" value="Cancel">
+                                </div>
                             </div>
                         </form>
                     </div>
