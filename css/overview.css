@@ -1,5 +1,5 @@
-.overview {
-    padding: 2rem;
+.grid-row {
+    justify-content: space-between;
 }
 
 .options-container-order-column {
