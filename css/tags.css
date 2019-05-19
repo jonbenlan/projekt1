@@ -4,6 +4,6 @@ button {
     padding: .5rem;
     box-shadow: 0 2px 2px black;
 }
-button:active {
+button:focus {
     background-color: cyan;
 }
