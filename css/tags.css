@@ -1,7 +1,7 @@
 button {
     width: 100%;
     border: 1px solid black;
-    padding: .5 rem;
+    padding: .5rem;
     box-shadow: 0 2px 2px black;
 }
 button:active {

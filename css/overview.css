@@ -3,7 +3,7 @@
 }
 
 .options-container-order-column {
-    flex: 0 0 80%;
+    flex: 0 0 75%;
 }
 .options-container-filter-column {
     flex: 0 0 20%;
@@ -20,7 +20,7 @@
     flex: 0 0 20%;
 }
 .list-container-item-middle-column {
-    flex: 0 0 70%;
+    flex: 0 0 60%;
 }
 .list-container-item-right-column {
     flex: 0 0 10%;
@@ -35,6 +35,29 @@
     margin-bottom: 1rem;
 }
 
-.list-container-item-importance {
-    align-self: flex-end;
+.list-container-item-content-toggle {
+    position: relative;
+}
+
+.list-container-item-content-toggle::before,
+.list-container-item-content-toggle::after {
+    content: "";
+    display: block;
+    position: absolute; 
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+.list-container-item-content-toggle::after {
+    top: 7px;
+    right: 11px;
+    border-width: 24px 18px 0 18px;
+    border-color: #ffffff transparent transparent transparent;
+}
+
+.list-container-item-content-toggle::before {
+    top: 5px;
+    right: 7px;
+    border-width: 30px 22px 0 22px;
+    border-color: black transparent transparent transparent;
 }
