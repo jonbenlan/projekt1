@@ -19,7 +19,7 @@
                             <label>Title</label>
                         </div>
                         <div class="note-content-input">
-                            <input>
+                            <input name="title" id="title">
                         </div>                    
                     </div>
                     <div class="note-content-text grid-row">
@@ -57,13 +57,13 @@
                         </div>
                     </div>
                     <div class="note-controls">
-                        <form action="overview.html">
+                        <form onsubmit="saveData()">
                             <div class="note-controls-row grid-row">
                                 <div class="note-controls-item-upper">
                                     <input class="button-standard border-black" type="submit" value="SPeichern">
                                 </div>
                                 <div class="note-controls-item-lower">
-                                    <input class="button-standard border-black" type="submit" value="Cancel">
+                                    <a class="button-standard border-black" href="overview.html">Cancel</a>>
                                 </div>
                             </div>
                         </form>
@@ -72,5 +72,6 @@
             </div>
         </div>
     </div>
+    <script src="js/saveForm.js"
 </body>
 </html>
