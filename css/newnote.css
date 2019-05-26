@@ -22,13 +22,25 @@
 
 .note-controls-item-lower {
     flex: 0 0 15%;
+
 }
 
-input[type="checkbox"] {
+input[type="radio"] {
     opacity: 0;
     width: auto;
 }
 
-/*.note-content-importance .note-content-input * {
+input[type="cancel"] {
+    width: auto;
+}
+
+.note-content-importance .note-content-input-group {
+    position: relative;
     display: inline-block;
-}*/
+}
+
+.note-content-importance .note-content-input-group input {
+    position: absolute;
+    top: 0;
+    left: 0;
+}

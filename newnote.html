@@ -27,7 +27,7 @@
                             <label>Beschreibung</label>
                         </div>
                         <div class="note-content-input">
-                            <textarea></textarea>
+                            <textarea name="text"></textarea>
                         </div>
                     </div>
                     <div class="note-content-importance grid-row">
@@ -37,23 +37,23 @@
                         <div class="note-content-input">
                             <div class="note-content-input-group">
                                 <label for="1">&#9889;</label>
-                                <input type="checkbox" name="1">
+                                <input type="radio" value="1" name="importance">
                             </div>
                             <div class="note-content-input-group">
                                 <label for="2">&#9889;</label>
-                                <input type="checkbox" name="2" value="&#9889;">
+                                <input type="radio" value="2" name="importance">
                             </div>
                             <div class="note-content-input-group">
                                 <label for="3">&#9889;</label>
-                                <input type="checkbox"  name="3">
+                                <input type="radio"  value="3" name="importance">
                             </div>
                             <div class="note-content-input-group">
                                 <label for="4">&#9889;</label>
-                                <input type="checkbox" name="4">
+                                <input type="radio" value="4" name="importance">
                             </div>
                             <div class="note-content-input-group">
                                 <label for="5">&#9889;</label>
-                                <input type="checkbox" name="5">
+                                <input type="radio" value="5" name="importance">
                             </div>
                         </div>
                     </div>
@@ -66,18 +66,18 @@
                         Datepicker
                         </div>
                     </div>
-                    <div class="note-controls">
-                        <form onsubmit="saveData()">
-                            <div class="note-controls-row grid-row">
-                                <div class="note-controls-item-upper">
-                                    <input class="button-standard border-black" type="submit" value="SPeichern">
-                                </div>
-                                <div class="note-controls-item-lower">
-                                    <a class="button-standard border-black" href="overview.html">Cancel</a>>
-                                </div>
+                </div>
+                <div class="note-controls">
+                    <form>
+                        <div class="note-controls-row grid-row">
+                            <div class="note-controls-item-upper">
+                                <button class="button-standard border-black" type="submit">Speichern</button>
                             </div>
-                        </form>
-                    </div>
+                            <div class="note-controls-item-lower">
+                                <button class="button-standard border-black" value="Cancel">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

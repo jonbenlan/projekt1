@@ -1,4 +1,3 @@
-
 function getData() {
     let testOutput = localStorage.getItem("title");
     let target = document.getElementsByClassName("list-container-item-title")[0];
