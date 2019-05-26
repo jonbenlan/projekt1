@@ -1,11 +1,3 @@
-let testData;
-
-testData = document.getElementById("title");
-
-function saveData() {
-    localStorage.setItem("title", testData.value)
-}
-
 function prepareData() {
 
     const content = document.querySelector('.note-content');
@@ -25,12 +17,7 @@ function prepareData() {
 }
 
 const controls = document.querySelector('.note-controls button');
-const importanceContainer = document.querySelector('.note-content-importance input');
 
-importanceContainer.addEventListener("click", () => {
-    
-    console.log(importanceValue);
-});
 
 controls.addEventListener("click", () => {
     event.preventDefault();
