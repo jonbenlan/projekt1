@@ -68,42 +68,44 @@
             <div class="list-container">
                 <div class="list-container-row grid-row row-gutter">
                     <div class="list-container-column grid-column">
-                        <div class="list-container-item">
-                            <div class="list-container-item-row grid-row">
-                                <div class="list-container-item-left-column grid-column">
-                                    <div class="list-container-item-header">
-                                        Nächsten Mittwoch
-                                    </div>
-                                    <div class="list-container-item-done">
-                                        <form class="list-container-item-done-form">
-                                            <input type="checkbox">
-                                            <label>Finished</label>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div class="list-container-item-middle-column grid-column">
-                                    <div class="list-container-item-header grid-row">
-                                        <div class="list-container-item-title">
-                                            
+                        <div class="list-container-items">
+                            <div class="list-container-item">
+                                <div class="list-container-item-row grid-row">
+                                    <div class="list-container-item-left-column grid-column">
+                                        <div class="list-container-item-header">
+                                            Nächsten Mittwoch
                                         </div>
-                                        <div class="list-container-item-importance">
-                                            !!!
+                                        <div class="list-container-item-done">
+                                            <form class="list-container-item-done-form">
+                                                <input type="checkbox">
+                                                <label>Finished</label>
+                                            </form>
                                         </div>
                                     </div>
-                                    <div class="list-container-item-content grid-row border-black">
-                                        <div class="list-container-item-content-textbox">
-                                            Die blöde ufzgi mached mi verruckt <br>
-                                            Die blöde ufzgi mached mi verruckt
+                                    <div class="list-container-item-middle-column grid-column">
+                                        <div class="list-container-item-header grid-row">
+                                            <div class="list-container-item-title">
+                                                
+                                            </div>
+                                            <div class="list-container-item-importance">
+                                                !!!
+                                            </div>
                                         </div>
-                                        <div class="list-container-item-content-toggle">
+                                        <div class="list-container-item-content grid-row border-black">
+                                            <div class="list-container-item-content-textbox">
+                                                Die blöde ufzgi mached mi verruckt <br>
+                                                Die blöde ufzgi mached mi verruckt
+                                            </div>
+                                            <div class="list-container-item-content-toggle">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="list-container-item-right-column grid-column">
-                                    <div class="list-container-item-button">
-                                        <button onclick="getData()" class="border-black block-button">
-                                            Edith
-                                        </button>
+                                    <div class="list-container-item-right-column grid-column">
+                                        <div class="list-container-item-button">
+                                            <button onclick="getData()" class="border-black block-button">
+                                                Edith
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -113,6 +115,51 @@
             </div>
         </div>
     </div>
-    <script src="js/getData.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js" integrity="sha256-qlku5J3WO/ehJpgXYoJWC2px3+bZquKChi4oIWrAKoI=" crossorigin="anonymous"></script>
+    <script id="list-item" type="text/x-handlebars-template">
+        {{#each this }}
+        <div class="list-container-item">
+                <div class="list-container-item-row grid-row">
+                    <div class="list-container-item-left-column grid-column">
+                        <div class="list-container-item-header">
+                            Nächsten Mittwoch
+                        </div>
+                        <div class="list-container-item-done">
+                            <form class="list-container-item-done-form">
+                                <input type="checkbox">
+                                <label>Finished</label>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="list-container-item-middle-column grid-column">
+                        <div class="list-container-item-header grid-row">
+                            <div class="list-container-item-title">
+                                {{this.[5]}}
+                            </div>
+                            <div class="list-container-item-importance">
+                                !!!
+                            </div>
+                        </div>
+                        <div class="list-container-item-content grid-row border-black">
+                            <div class="list-container-item-content-textbox">
+                                Die blöde ufzgi mached mi verruckt <br>
+                                Die blöde ufzgi mached mi verruckt
+                            </div>
+                            <div class="list-container-item-content-toggle">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-container-item-right-column grid-column">
+                        <div class="list-container-item-button">
+                            <button onclick="getData()" class="border-black block-button">
+                                Edith
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+      </script>
+    <script async src="js/getData.js"></script>
 </body>
 </html>

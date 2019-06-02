@@ -26,7 +26,9 @@ const controls = document.querySelector('.note-controls button');
 controls.addEventListener("click", () => {
     event.preventDefault();
 
-    localStorage.setItem("data", prepareData());
+    let dataObjectName = `data-${( new Date())}`;
+
+    localStorage.setItem(dataObjectName, prepareData());
 
     window.location.href = "overview.html";
 

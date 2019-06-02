@@ -1,9 +1,12 @@
-function getData() {
-    let testOutput = localStorage.getItem("title");
-    let target = document.getElementsByClassName("list-container-item-title")[0];
-    writeData(testOutput, target);
+//const testOutput = localStorage.getItem("data");
+const testOutput = {...localStorage};
+console.log(testOutput);
+
+const listItemTemplate = document.getElementById("list-item").innerHTML;
+const listItem = Handlebars.compile(listItemTemplate);
+
+function renderItems () {
+    document.querySelector('.list-container-items').innerHTML = listItem(testOutput);
 }
 
-function writeData(testOutput, target) {
-    target.innerText = testOutput;
-}
+const render = renderItems();

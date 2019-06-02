@@ -5,13 +5,13 @@ const importanceInputs = importanceContainer.querySelectorAll("input[name='impor
 importanceContainer.addEventListener("click", () => {
     checkedInput = event.target;
     checkedInputValue = checkedInput.value;
-    let highlightTarget = importanceInputs[i].closest(".note-content-input-group");
+    //let highlightTarget = importanceInputs[i].closest(".note-content-input-group");
     console.log(checkedInputValue);
     removeHighlights(5);
     loopImportance(checkedInputValue);
-    let loop = new importanceLoop(highlightTarget);
-    loop.loop(5, remove);
-    loop.loop(checkedInputValue, add);
+    //let loop = new importanceLoop(highlightTarget);
+    //loop.loop(5, remove);
+    //loop.loop(checkedInputValue, add);
 });
 
 function loopImportance(iterations) {
