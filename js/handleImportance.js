@@ -1,4 +1,4 @@
-const importanceContainer = document.querySelector('.note-content-importance');
+const importanceContainer = document.querySelector('.js-importance-listener');
 
 const importanceInputs = importanceContainer.querySelectorAll("input[name='importance']");
 

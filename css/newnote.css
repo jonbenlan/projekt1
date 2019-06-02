@@ -34,14 +34,15 @@ input[type="cancel"] {
     width: auto;
 }
 
+.note-content-importance .note-content-input div {
+    display: inline-block;
+}
+
 .note-content-importance .note-content-input-group {
     position: relative;
-    display: inline-block;
     opacity: 0.3;
 }
 
-.note-content-importance label {
-}
 
 .note-content-importance .note-content-input-group.highlited {
     opacity: 1;
