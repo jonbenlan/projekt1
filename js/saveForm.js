@@ -7,11 +7,15 @@ function prepareData() {
     const textValue = textInput.value;
     const checkedImportance = content.querySelector('input:checked');
     const importanceValue = checkedImportance.value;
+    const dateInput = content.querySelector('input[name="date"]');
+    const dateValue = dateInput.value;
 
     const dataObject = new Object();
     dataObject["title"] = titleValue;
     dataObject["text"] = textValue;
     dataObject["importance"] = importanceValue;
+    dataObject["date"] = dateValue;
+
     
     return JSON.stringify(dataObject);
 }
