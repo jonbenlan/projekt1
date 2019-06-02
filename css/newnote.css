@@ -37,16 +37,22 @@ input[type="cancel"] {
 .note-content-importance .note-content-input-group {
     position: relative;
     display: inline-block;
-}
-
-.note-content-importance label {
     opacity: 0.3;
 }
 
-.note-content-importance label.highlited {
+.note-content-importance label {
+}
+
+.note-content-importance .note-content-input-group.highlited {
     opacity: 1;
 }
 
 input[type="radio"] {
-    display: none;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    margin: 0;
 }

@@ -1,10 +1,10 @@
 const importanceContainer = document.querySelector('.note-content-importance');
 
-const importanceInputs = importanceContainer.querySelectorAll("label");
+const importanceInputs = importanceContainer.querySelectorAll("input[name='importance']");
 
 importanceContainer.addEventListener("click", () => {
     checkedInput = event.target;
-    checkedInputValue = checkedInput.htmlFor;
+    checkedInputValue = checkedInput.value;
     console.log(checkedInputValue);
     removeHighlights(5);
     loopImportance(checkedInputValue);
@@ -12,12 +12,12 @@ importanceContainer.addEventListener("click", () => {
 
 function loopImportance(iterations) {
     for (let i = 0; i < iterations; i++) {
-        importanceInputs[i].classList.add('highlited');
+        importanceInputs[i].closest(".note-content-input-group").classList.add('highlited');
     }
 }
 
 function removeHighlights(iterations) {
     for (let i = 0; i < iterations; i++) {
-        importanceInputs[i].classList.remove('highlited');
+        importanceInputs[i].closest(".note-content-input-group").classList.remove('highlited');
     }
 }
