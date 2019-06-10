@@ -116,6 +116,7 @@
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js" integrity="sha256-qlku5J3WO/ehJpgXYoJWC2px3+bZquKChi4oIWrAKoI=" crossorigin="anonymous"></script>
+    
     <script id="list-item" type="text/x-handlebars-template">
         {{#each this }}
         <div class="list-container-item">
@@ -137,7 +138,11 @@
                                 {{title}}
                             </div>
                             <div class="list-container-item-importance">
-                                {{importance}}
+                                {{#times importance}}
+                                    <div class="importance-container">
+                                        &#9889;
+                                    </div>
+                                {{/times}}
                             </div>
                         </div>
                         <div class="list-container-item-content grid-row border-black">
@@ -160,5 +165,7 @@
             {{/each}}
       </script>
     <script async src="js/getData.js"></script>
+    <script async src="js/handlebars.js"></script>
+
 </body>
 </html>
