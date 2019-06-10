@@ -14,9 +14,16 @@ importanceContainer.addEventListener("click", () => {
     //loop.loop(checkedInputValue, add);
 });
 
-function loopImportance(iterations) {
+function loopImportance(iterations, selected) {
+
+    Array.from(importanceInputs).forEach((item, index) => {
+        importanceInputs[i].closest(".note-content-input-group").classList.toggle('highlited', i <= selected);
+
+    })
     for (let i = 0; i < iterations; i++) {
         importanceInputs[i].closest(".note-content-input-group").classList.add('highlited');
+        importanceInputs[i].closest(".note-content-input-group").classList.toggle('highlited', i <= selected);
+
     }
 }
 
