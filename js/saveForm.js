@@ -26,7 +26,7 @@ const controls = document.querySelector('.note-controls button');
 controls.addEventListener("click", () => {
     event.preventDefault();
 
-    let dataObjectName = `data-${( new Date())}`;
+    let dataObjectName = new Date();
 
     localStorage.setItem(dataObjectName, prepareData());
 

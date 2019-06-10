@@ -1,6 +1,12 @@
-//const testOutput = localStorage.getItem("data");
 const testOutput = {...localStorage};
-console.log(testOutput);
+// console.log(Object.keys(testOutput));
+
+Object.keys(testOutput).forEach( (key) => {
+    const data = JSON.parse(testOutput[key]);
+    console.log(data);
+
+});
+// const testOutput = JSON.stringify(localStorage);
 
 const listItemTemplate = document.getElementById("list-item").innerHTML;
 const listItem = Handlebars.compile(listItemTemplate);
