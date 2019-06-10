@@ -69,19 +69,14 @@
                 <div class="list-container-row grid-row row-gutter">
                     <div class="list-container-column grid-column">
                         <div class="list-container-items">
-                            <div class="list-container-item">
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    
+    </div>   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js" integrity="sha256-qlku5J3WO/ehJpgXYoJWC2px3+bZquKChi4oIWrAKoI=" crossorigin="anonymous"></script>
-    
-    <script id="list-item" type="text/x-handlebars-template">
+    <script id="note-item-template" type="text/x-handlebars-template">
         {{#each this }}
         <div class="list-container-item">
                 <div class="list-container-item-row grid-row">
@@ -129,8 +124,11 @@
             {{/each}}
       </script>
       
-    <script async src="js/handlebars.js"></script>
-    <script async src="js/getData.js"></script>
+      <script async src="js/handlebars.js"></script>
+      <script async src="js/controller-overview.js"></script>
+      <script async src="js/getData.js"></script>
+      <script async src="js/bootstrapper-overview.js"></script>
+
 
 </body>
 </html>

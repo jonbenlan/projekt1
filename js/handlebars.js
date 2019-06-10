@@ -4,7 +4,3 @@ Handlebars.registerHelper('times', function(n, block) {
         accum += block.fn(i);
     return accum;
 });
-
-
-const listItemTemplate = document.getElementById("list-item").innerHTML;
-const listItem = Handlebars.compile(listItemTemplate);
