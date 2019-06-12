@@ -13,18 +13,19 @@
 
 // const render = renderItems();
 
-class GetNotesData {
+export class GetNotesData {
     constructor() {
-        this.notesData = localStorage;
+        this.notesData = {...localStorage};
     }
     
     getAll() {
+
         Object.keys(this.notesData).forEach( (key) => {
             const data = JSON.parse(this.notesData[key]);
             this.notesData[key] = data;
         
         });
-
+        console.log(this.notesData);
         return this.notesData;
 
     }

@@ -1,4 +1,4 @@
-class ControllerOverview {
+export class ControllerOverview {
     constructor(notesData) {
 
         this.notesData              = notesData;
@@ -7,7 +7,7 @@ class ControllerOverview {
     }
 
     showNotes() {
-        this.noteListContainer.innerHTML = this.noteTemplateCompiled(notesData.notesData);
+        this.noteListContainer.innerHTML = this.noteTemplateCompiled(this.notesData.getAll());
     }
 
     initEventHandlers() {
@@ -17,7 +17,7 @@ class ControllerOverview {
 
     notesStart() {
         this.initEventHandlers();
-        this.notesData.getAll();
+        // this.notesData.getAll();
         this.showNotes();
     }
 }
