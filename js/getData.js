@@ -39,6 +39,15 @@ export class GetNotesData {
 
     }
 
+    
+    compareNotes(n1, n2, orderOption) {
+        return n2.orderOption - n1.orderOption;
+    }
+    
+    sortNotes(orderOption) {
+        this.notes = this.notes.sort(compareNotes(n1, n2, orderOption));
+    }
+
 
     update(noteDone) {
         localStorage.setItem('notes', JSON.stringify(notes));
