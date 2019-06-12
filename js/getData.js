@@ -20,13 +20,13 @@ export class GetNotesData {
     
     getAll() {
 
-        Object.keys(this.notesData).forEach( (key) => {
+        this notes = Object.keys(this.notesData).forEach( (key) => {
             const data = JSON.parse(this.notesData[key]);
             this.notesData[key] = data;
         
         });
-        console.log(this.notesData);
-        return this.notesData;
+        console.log(this.notes);
+        
 
     }
 

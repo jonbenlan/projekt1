@@ -7,7 +7,7 @@ export class ControllerOverview {
     }
 
     showNotes() {
-        this.noteListContainer.innerHTML = this.noteTemplateCompiled(this.notesData.getAll());
+        this.noteListContainer.innerHTML = this.noteTemplateCompiled(notes);
     }
 
     initEventHandlers() {
@@ -17,7 +17,7 @@ export class ControllerOverview {
 
     notesStart() {
         this.initEventHandlers();
-        // this.notesData.getAll();
+        this.notesData.getAll();
         this.showNotes();
     }
 }
