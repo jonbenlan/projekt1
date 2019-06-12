@@ -1,6 +1,7 @@
 export class ControllerOverview {
     constructor(notesData) {
-
+        this.optionsButtons         = document.querySelectorAll('.options-container-order-items button');
+        
         this.notesData              = notesData;
         this.noteTemplateCompiled   = Handlebars.compile(document.getElementById('note-item-template').innerHTML);
         this.noteListContainer      = document.querySelector('.list-container-items');

@@ -15,16 +15,25 @@
 
 export class GetNotesData {
     constructor() {
-        this.notesData = {...localStorage};
+        const storage = JSON.parse(localStorage.getItem('notes') || "[ ]");
+        this.storage = storage;
+        this.notes = [ ];
     }
     
     getAll() {
+        return this.storage;
+    }
 
-        this notes = Object.keys(this.notesData).forEach( (key) => {
-            const data = JSON.parse(this.notesData[key]);
-            this.notesData[key] = data;
+    loadData() {
+
+        this.notes = this.storage.getAll().map(n => new Note(n.id, n.createDate, n.finishDate, n.title, n.text, n.importance, n.dueDate));
+
+
+        // this.notes = Object.keys(this.notesData).forEach( (key) => {
+        //     const data = JSON.parse(this.notesData[key]);
+        //     this.notesData[key] = data;
         
-        });
+        // });
         console.log(this.notes);
         
 
@@ -32,7 +41,7 @@ export class GetNotesData {
 
 
     update(noteDone) {
-        // localStorage.setItem('foodStorage_v1', JSON.stringify(food));
-        // return food;
+        localStorage.setItem('notes', JSON.stringify(notes));
+        return notes;
     }
 }
