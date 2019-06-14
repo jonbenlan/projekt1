@@ -1,3 +1,5 @@
+import {Note} from ('./note');
+
 function prepareData() {
 
     const content = document.querySelector('.note-content');
@@ -33,3 +35,16 @@ controls.addEventListener("click", () => {
     window.location.href = "overview.html";
 
 });
+
+class SaveNote {
+    constructor() {
+        const storage = JSON.parse(localStorage.getItem('notes') || "[ ]");
+        this.storage = storage;
+    }
+
+    addNote() {
+        const Note = new Note(
+
+        )
+    }
+}
