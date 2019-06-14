@@ -25,8 +25,9 @@ export class GetNotesData {
     }
 
     loadData() {
+        console.log(this.storage);
 
-        this.notes = this.storage.getAll().map(n => new Note(n.id, n.createDate, n.finishDate, n.title, n.text, n.importance, n.dueDate));
+        this.notes = this.storage.map(n => new Note(n.id, n.createDate, n.finishDate, n.title, n.text, n.importance, n.dueDate));
 
 
         // this.notes = Object.keys(this.notesData).forEach( (key) => {
@@ -34,7 +35,6 @@ export class GetNotesData {
         //     this.notesData[key] = data;
         
         // });
-        console.log(this.notes);
         
 
     }

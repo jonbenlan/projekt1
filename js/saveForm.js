@@ -28,7 +28,7 @@ controls.addEventListener("click", () => {
 
     let dataObjectName = new Date();
 
-    localStorage.setItem(dataObjectName, prepareData());
+    localStorage.setItem('notes', prepareData());
 
     window.location.href = "overview.html";
 
