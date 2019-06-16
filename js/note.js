@@ -2,12 +2,11 @@ export class Note {
     constructor(id, createDate, title, text, importance, dueDate) {
         this.id = id;
         this.createDate = createDate;
-        this.finishDate = finishDate;
         this.title      = title;
         this.text       = text;
         this.importance = importance;
         this.dueDate    = dueDate;
-        this.finishDate = '';
+        // this.finishDate = '';
     }
     toJSON() {
         return {

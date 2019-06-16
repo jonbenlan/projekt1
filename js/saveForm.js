@@ -1,4 +1,4 @@
-import {Note} from ('./note');
+import {Note} from './note.js';
 
 function prepareData() {
 
@@ -22,29 +22,39 @@ function prepareData() {
     return JSON.stringify(dataObject);
 }
 
-const controls = document.querySelector('.note-controls button');
+// const controls = document.querySelector('.note-controls button');
 
 
-controls.addEventListener("click", () => {
-    event.preventDefault();
+// controls.addEventListener("click", () => {
+//     event.preventDefault();
 
-    let dataObjectName = new Date();
+//     let dataObjectName = new Date();
 
-    localStorage.setItem('notes', prepareData());
+//     localStorage.setItem('notes', prepareData());
 
-    window.location.href = "overview.html";
+//     window.location.href = "overview.html";
 
-});
+// });
 
-class SaveNote {
+export class NewNote {
     constructor() {
-        const storage = JSON.parse(localStorage.getItem('notes') || "[ ]");
-        this.storage = storage;
+        this.storage = [ ];
+        
+        this.title = document.querySelector('.note-content input[name="title"]').value;
+        this.text = document.querySelector('.note-content textarea[name="text"]').value;
+        this.importance = document.querySelector('.note-content input:checked').value;
+        this.dueDate = document.querySelector('.note-content input[name="date"]').value;
+        this.createDate = new Date();
     }
 
-    addNote() {
-        const Note = new Note(
+    addNote(notes) {
+        this.storage = notes;
+        // this.newNotes = this.storage.map(n => new Note(n.id, n.createDate, n.finishDate, n.title, n.text, n.importance, n.dueDate));
+        const newNote = new Note(Object.keys(this.storage), this.createDate, this.title, this.text, this.importance, this.dueDate );
+        console.log(newNote);
+        // return newNote;  
+        this.storage.push(newNote);
 
-        )
+        console.log(this.storage);
     }
 }
