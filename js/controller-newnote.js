@@ -14,12 +14,11 @@ class ControllerNewNote {
     
             this.NewNote = new NewNote();
 
-
             const notes = this.notesData.getAll();
+            
             this.NewNote.addNote(notes);
             
-            
-            // window.location.href = "overview.html";
+            window.location.href = "overview.html";
 
         });
     }
