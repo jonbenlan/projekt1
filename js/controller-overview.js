@@ -15,7 +15,7 @@ export class ControllerOverview {
         this.optionsButtons.forEach( (button) => {
             button.addEventListener('click', () => {
                 const orderOption = button.dataset.order;
-                newOrder(orderOption);
+                this.newOrder(orderOption);
             })
         });
     }
@@ -23,6 +23,7 @@ export class ControllerOverview {
     newOrder(orderOption) {
         this.notesData.loadData();
         this.notesData.sortNotes(orderOption); 
+        console.log(this.notes);
         this.showNotes();
     }
 

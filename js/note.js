@@ -12,7 +12,6 @@ export class Note {
         return {
             id: this.id,
             createDate: this.createDate,
-            finishDate: this.finishDate,
             title: this.title,
             text: this.text,
             importance: this.importance,

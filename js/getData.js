@@ -13,6 +13,8 @@
 
 // const render = renderItems();
 
+import {Note} from './note.js';
+
 export class GetNotesData {
     constructor() {
         const storage = JSON.parse(localStorage.getItem('notes') || "[ ]");
@@ -25,10 +27,9 @@ export class GetNotesData {
     }
 
     loadData() {
-        console.log(this.storage);
+        // console.log(this.storage);
 
-        this.notes = this.storage.map(n => new Note(n.id, n.createDate, n.finishDate, n.title, n.text, n.importance, n.dueDate));
-
+        this.notes = this.storage.map(n => new Note(n.id, n.createDate, n.title, n.text, n.importance, n.dueDate));
 
         // this.notes = Object.keys(this.notesData).forEach( (key) => {
         //     const data = JSON.parse(this.notesData[key]);
@@ -39,13 +40,29 @@ export class GetNotesData {
 
     }
 
+
+
     
-    compareNotes(n1, n2, orderOption) {
-        return n2.orderOption - n1.orderOption;
+    // compareNotes(n1, n2) {
+    //     // console.log(n2.orderOption - n1.orderOption);
+    //     return n2.importance - n1.importance;
+        
+    // }
+    compareNotes(orderOption) {
+        return (n1, n2) => {
+
+            return n1[orderOption] - n2[orderOption];
+        }
     }
     
     sortNotes(orderOption) {
-        this.notes = this.notes.sort(compareNotes(n1, n2, orderOption));
+        console.log(this.notes);
+
+        this.notes = this.notes.sort(this.compareNotes(orderOption));
+        localStorage.setItem('notes', JSON.stringify(this.notes));
+        console.log(this.notes);
+
+
     }
 
 
