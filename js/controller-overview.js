@@ -1,6 +1,8 @@
 export class ControllerOverview {
     constructor(notesData) {
         this.optionsButtons         = document.querySelectorAll('.options-container-order-items button');
+        this.filterButton           = document.querySelector('.options-container-filter-button');
+        this.finishedInputs         = document.getElementsByClassName('js-input-done');
 
         this.notesData              = notesData;
         this.noteTemplateCompiled   = Handlebars.compile(document.getElementById('note-item-template').innerHTML);
@@ -26,6 +28,17 @@ export class ControllerOverview {
                 this.newOrder(orderOption);
             })
         });
+        Array.from(this.finishedInputs).forEach( (input) => {
+            console.log(input);
+            input.addEventListener('click', () => {
+                // this.newOrder(orderOption);
+
+                console.log(input.dataset.noteId);
+            })
+        });
+        this.filterButton.addEventListener('click', () => {
+
+        });
     }
 
     newOrder(orderOption) {
@@ -36,8 +49,9 @@ export class ControllerOverview {
 
 
     notesStart() {
-        this.initEventHandlers();
         this.notesData.getAll();
         this.showNotes();
+        this.initEventHandlers();
+        
     }
 }
