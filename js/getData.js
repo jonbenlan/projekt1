@@ -50,18 +50,14 @@ export class GetNotesData {
     // }
     compareNotes(orderOption) {
         return (n1, n2) => {
-
             return n1[orderOption] - n2[orderOption];
         }
     }
     
     sortNotes(orderOption) {
-        console.log(this.notes);
 
-        this.notes = this.notes.sort(this.compareNotes(orderOption));
-        localStorage.setItem('notes', JSON.stringify(this.notes));
-        console.log(this.notes);
-
+        this.storage = this.notes.sort(this.compareNotes(orderOption));
+        localStorage.setItem('notes', JSON.stringify(this.storage));
 
     }
 

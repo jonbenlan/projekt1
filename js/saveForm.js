@@ -8,7 +8,8 @@ export class NewNote {
         this.text = document.querySelector('.note-content textarea[name="text"]').value;
         this.importance = document.querySelector('.note-content input:checked').value;
         this.dueDate = document.querySelector('.note-content input[name="date"]').value;
-        this.createDate = new Date();
+        this.dueDate = new Date(this.dueDate).getTime();
+        this.createDate = Date.now();
     }
 
     addNote(notes) {
