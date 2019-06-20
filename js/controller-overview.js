@@ -7,8 +7,16 @@ export class ControllerOverview {
         this.noteListContainer      = document.querySelector('.list-container-items');
     }
 
+    convertDates() {
+        this.noteListContainer.querySelectorAll('.js-convert-date').forEach( (date) => {
+            const convertedDate = new Date(Number(date.innerText));
+            date.innerHTML = convertedDate.toLocaleDateString();
+        })
+    }
+
     showNotes() {
         this.noteListContainer.innerHTML = this.noteTemplateCompiled(this.notesData.storage);
+        this.convertDates();
     }
 
     initEventHandlers() {
@@ -23,7 +31,6 @@ export class ControllerOverview {
     newOrder(orderOption) {
         this.notesData.loadData();
         this.notesData.sortNotes(orderOption); 
-        console.log(this.notes);
         this.showNotes();
     }
 
