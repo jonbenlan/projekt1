@@ -29,11 +29,10 @@ export class ControllerOverview {
             })
         });
         Array.from(this.finishedInputs).forEach( (input) => {
-            console.log(input);
             input.addEventListener('click', () => {
                 // this.newOrder(orderOption);
-
-                console.log(input.dataset.noteId);
+                console.log(this.notesData.storage);
+                
             })
         });
         this.filterButton.addEventListener('click', () => {
