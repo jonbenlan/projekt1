@@ -1,6 +1,6 @@
 // import {Note} from './note.js';
-import {GetNotesData} from './getData.js';
-import {NewNote} from './saveForm.js';
+import {GetNotesData} from '../services/getData.js';
+import {NewNote} from '../services/saveForm.js';
 // import {GetNotesData} from './handleImportance.js';
 
 
@@ -18,7 +18,7 @@ class ControllerNewNote {
             
             this.NewNote.addNote(notes);
             
-            window.location.href = "overview.html";
+            window.location.href = "/";
 
         });
     }

@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/grid.css">
     <link rel="stylesheet" type="text/css" href="css/general.css">
     <link rel="stylesheet" type="text/css" href="css/overview.css">
+    
 </head>
 <body>
     <div class="overview wrapper">
@@ -75,9 +76,12 @@
             </div>
         </div>
     </div>   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js" integrity="sha256-qlku5J3WO/ehJpgXYoJWC2px3+bZquKChi4oIWrAKoI=" crossorigin="anonymous"></script>
-    <script async src="js/handlebars.js"></script>
-    <script async src="js/bootstrapper-overview.js" type="module" defer></script>
+
+    <script src="../libs/handlebars-v4.0.5.js" defer></script>
+    <script src="../js/utils/handlebars-helpers.js" defer></script>
+    
+    <script src="../js/utils/handlebars.js" defer></script>
+    <script src="../js/bootstrapper/bootstrapper-overview.js" type="module" defer></script>
  
     <script id="note-item-template" type="text/x-handlebars-template">
         {{#each this }}
