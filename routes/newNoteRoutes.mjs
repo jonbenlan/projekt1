@@ -1,10 +1,9 @@
 import express from 'express';
 const router = express.Router();
-// import {ordersController} from '../controller/orders-controller.js';
+import {notesController} from '../controller/notesController.mjs';
 
-// router.get("/", ordersController.getOrders.bind(ordersController));
-// router.post("/", ordersController.createPizza.bind(ordersController));
+router.get("/", notesController.getNotes.bind(notesController));
+router.post("/", notesController.createNote.bind(notesController));
 // router.get("/:id/", ordersController.showOrder.bind(ordersController));
-// router.delete("/:id/", ordersController.deleteOrder.bind(ordersController));
 
-export const orderRoutes = router;
+export const newNoteRoutes = router;

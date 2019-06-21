@@ -1,5 +1,5 @@
 // import { authService } from '../services/auth-service.js'
-import { orderService } from '../services/order-service.js'
+import { orderService } from '../services/_order-service.js'
 
 
 const btnNewPizza = document.querySelector("#createPizza");

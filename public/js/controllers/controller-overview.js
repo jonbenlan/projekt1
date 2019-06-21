@@ -1,10 +1,12 @@
+import { noteService } from '../services/note-service.js'
+
 export class ControllerOverview {
-    constructor(notesData) {
+    constructor(noteService) {
         this.optionsButtons         = document.querySelectorAll('.options-container-order-items button');
         this.filterButton           = document.querySelector('.options-container-filter-button');
         this.finishedInputs         = document.getElementsByClassName('js-input-done');
 
-        this.notesData              = notesData;
+        this.notesData              = noteService;
         this.noteTemplateCompiled   = Handlebars.compile(document.getElementById('note-item-template').innerHTML);
         this.noteListContainer      = document.querySelector('.list-container-items');
     }
@@ -17,7 +19,7 @@ export class ControllerOverview {
     }
 
     showNotes() {
-        this.noteListContainer.innerHTML = this.noteTemplateCompiled(this.notesData.storage);
+        this.noteListContainer.innerHTML = this.noteTemplateCompiled(this.notesData.getNotes);
         this.convertDates();
     }
 
