@@ -18,14 +18,15 @@ import { httpService } from './http-service.js'
 //     }
 // }
 
-class NoteService {    
+export class NoteService {
     async createNote(createDate, title, text, importance, dueDate) {
-        return await httpService.ajax("POST", "/newnote", { 
+        return await httpService.ajax("POST", "/newnote.html", { 
             createDate: createDate,
             title: title,
             text: text,
             importance: importance,
-            dueDate: dueDate });
+            dueDate: dueDate 
+        });
     }
 
     async getNotes() {
@@ -37,4 +38,3 @@ class NoteService {
     }
 
 }
-export const noteService = new NoteService();
