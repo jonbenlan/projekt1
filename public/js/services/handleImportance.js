@@ -5,6 +5,7 @@ const importanceInputs = importanceContainer.querySelectorAll("input[name='impor
 importanceContainer.addEventListener("click", () => {
     checkedInput = event.target;
     checkedInputValue = checkedInput.value;
+    console.log('test');
     //let highlightTarget = importanceInputs[i].closest(".note-content-input-group");
     console.log(checkedInputValue);
     removeHighlights(5);

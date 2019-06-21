@@ -19,8 +19,13 @@ import { httpService } from './http-service.js'
 // }
 
 class NoteService {    
-    async createNote(pizzeName) {
-        return await httpService.ajax("POST", "/newnote", { name: pizzeName });
+    async createNote(createDate, title, text, importance, dueDate) {
+        return await httpService.ajax("POST", "/newnote", { 
+            createDate: createDate,
+            title: title,
+            text: text,
+            importance: importance,
+            dueDate: dueDate });
     }
 
     async getNotes() {

@@ -1,8 +1,8 @@
 import express from 'express';
 
 const router = express.Router();
-import {indexController} from '../controller/indexController.mjs';
+import {notesController} from '../controller/notesController.mjs';
 
-router.get("/", indexController.notesStart.bind(indexController));
+router.get("/", notesController.getNotes.bind(notesController));
 
 export const indexRoutes = router;

@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import path from 'path';
 // import jwt from 'express-jwt';
 
-// import {indexRoutes} from './routes/indexRoutes.mjs';
+import {indexRoutes} from './routes/indexRoutes.mjs';
 import {newNoteRoutes} from './routes/newNoteRoutes.mjs';
 
 const app = express();
@@ -36,14 +36,14 @@ app.get("/", function(req, res){
     res.sendFile("/html/index.html",  {root: __dirname + '/public/'});
 });
 
-app.get("/newnote", function(req, res){
-    res.sendFile("/html/newnote.html",  {root: __dirname + '/public/'});
+app.get("/newnote.html", function(req, res){
+    res.sendFile("html/newnote.html",  {root: __dirname + '/public/'});
 });
 
 
-// app.use("/", indexRoutes);
+app.use("/", indexRoutes);
 // app.use(jwt( app.get("jwt-validate"))); //after this middleware a token is required!
-app.use("/newnote", newNoteRoutes);
+app.use("/newnote.html", newNoteRoutes);
 
 
 app.use(function (err, req, res, next) {
