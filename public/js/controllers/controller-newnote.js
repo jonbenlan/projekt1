@@ -8,32 +8,30 @@ import { importanceService } from '../services/importance-service.js    '
 
 class ControllerNewNote {
     constructor() {
-        // this.notesData = new GetNotesData();
         this.noteService = new NoteService();
 
         this.importanceService = new importanceService();
         this.importance = this.importanceService.importance;
         this.importanceContainer = this.importanceService.importanceContainer;
 
-        this.title = document.querySelector('.note-content input[name="title"]').value;
-        this.text = document.querySelector('.note-content textarea[name="text"]').value;
-        this.dueDate = document.querySelector('.note-content input[name="date"]').value;
-        this.dueDate = new Date(this.dueDate).getTime();
-        this.createDate = Date.now();
+        // this.title = document.getElementsByTagName('input[name="title"]').value;
+        // this.text = document.getElementsByTagName('textarea[name="text"]').value;
+        // this.dueDate = document.getElementsByTagName('input[name="date"]').value;
+        // this.dueDate = new Date(this.dueDate).getTime();
+        // this.createDate = Date.now();
     }
     initEventHandlers() {
 
         document.querySelector('.note-controls button').addEventListener("click", async event => {
             event.preventDefault();
+                
+            this.title = document.querySelector('.note-content input[name="title"]').value;
+            this.text = document.querySelector('.note-content textarea[name="text"]').value;
+            this.dueDate = document.querySelector('.note-content input[name="date"]').value;
+            this.dueDate = new Date(this.dueDate).getTime();
+            this.createDate = Date.now();            
 
             await this.noteService.createNote(this.createDate, this.title, this.text, this.importance, this.dueDate );
-
-    
-            // this.NewNote = new NewNote();
-
-            // const notes = this.notesData.getAll();
-            
-            // this.NewNote.addNote(notes);
             
             window.location.href = "/";
 
