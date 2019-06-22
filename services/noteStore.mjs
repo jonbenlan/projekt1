@@ -58,8 +58,12 @@ export class NoteStore {
         return await this.db.findOne({_id: id});
     }
 
+    // async all() {
+    //     return await this.db.cfind({}).sort({ orderDate: -1 }).exec();
+    // }
+    
     async all() {
-        return await this.db.cfind({}).sort({ orderDate: -1 }).exec();
+        return this.db.find();
     }
 }
 

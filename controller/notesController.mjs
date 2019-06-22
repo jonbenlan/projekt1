@@ -27,14 +27,16 @@ export class NotesController {
     };
 
     async createNote(req, res) {
-        res.json(await noteStore.add({
-            createDate: req.body.createDate,
-            title: req.body.title,
-            text: req.body.text,
-            importance: req.body.importance,
-            dueDate: req.body.dueDate
-        }));
+        console.log(req.body.createDate);
+        res.json(await noteStore.add(
+            req.body.createDate,
+            req.body.title,
+            req.body.text,
+            req.body.importance,
+            req.body.dueDate
+        ));
     };
+
 
     async showNote(req, res) {
         res.json(await noteStore.get(req.params.id));

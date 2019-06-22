@@ -1,4 +1,4 @@
-import { noteService } from '../services/note-service.js'
+import { NoteService } from '../services/note-service.js'
 
 export class ControllerOverview {
     constructor(noteService) {
@@ -6,7 +6,7 @@ export class ControllerOverview {
         this.filterButton           = document.querySelector('.options-container-filter-button');
         this.finishedInputs         = document.getElementsByClassName('js-input-done');
 
-        this.notesData              = noteService;
+        this.notesData              = NoteService;
         this.noteTemplateCompiled   = Handlebars.compile(document.getElementById('note-item-template').innerHTML);
         this.noteListContainer      = document.querySelector('.list-container-items');
     }
@@ -33,7 +33,7 @@ export class ControllerOverview {
         Array.from(this.finishedInputs).forEach( (input) => {
             input.addEventListener('click', () => {
                 // this.newOrder(orderOption);
-                console.log(this.notesData.storage);
+                // console.log(this.notesData.storage);
                 
             })
         });
@@ -50,7 +50,7 @@ export class ControllerOverview {
 
 
     notesStart() {
-        this.notesData.getAll();
+        this.notesData.getNotes;
         this.showNotes();
         this.initEventHandlers();
         
