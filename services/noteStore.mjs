@@ -54,10 +54,6 @@ export class NoteStore {
         let updatedNote = new Note(createDate, title, text, importance, dueDate)
         return await this.db.update({_id: id}, updatedNote, {});
     }
-
-    // async all() {
-    //     return await this.db.cfind({}).sort({ orderDate: -1 }).exec();
-    // }
     
     async all() {
         return await this.db.cfind({}).sort({ createDate: -1 }).exec();

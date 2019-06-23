@@ -18,6 +18,8 @@ class ControllerNewNote {
 
         this.title = document.getElementById('title');
         this.text = document.getElementById('text');
+        this.textValue = this.text.value.replace(/(?:\r\n|\r|\n)/g, '\\n');
+        
         this.dueDate = document.getElementById('dueDate');
         this.dueDateValue = new Date(this.dueDate.value).getTime();
         this.createDate = Date.now();
@@ -29,11 +31,11 @@ class ControllerNewNote {
 
             if (this.noteID) {
 
-                await this.noteService.updateNote(this.noteID, this.createDate, this.title.value, this.text.value, this.importance, this.dueDateValue);
+                await this.noteService.updateNote(this.noteID, this.createDate, this.title.value, this.text.value.replace(/(?:\r\n|\r|\n)/g, '\\n'), this.importance, this.dueDateValue);
 
             } else {
 
-                await this.noteService.createNote(this.createDate, this.title.value, this.text.value, this.importance, this.dueDateValue);
+                await this.noteService.createNote(this.createDate, this.title.value, this.textValue, this.importance, this.dueDateValue);
 
             }
                       
@@ -48,14 +50,11 @@ class ControllerNewNote {
     }
     async renderZeroState() {
         if (this.noteID) {
-            console.log(await this.noteService.getNote(this.noteID))    ;
             const note = await this.noteService.getNote(this.noteID);
             this.title.value = note.title;
             this.text.value = note.text;
             this.importanceService.highlight(note.importance);
             this.dueDate.value = new Date(Number(note.dueDate));            
-
-            console.log(this.dueDate.value);
 
         }
         this.initEventHandlers();
