@@ -36,14 +36,14 @@ app.get("/", function(req, res){
     res.sendFile("/html/index.html",  {root: __dirname + '/public/'});
 });
 
-app.get("/newnote.html", function(req, res){
-    res.sendFile("html/newnote.html",  {root: __dirname + '/public/'});
-});
+// app.get("/newnote.html", function(req, res){
+//     res.sendFile("html/newnote.html",  {root: __dirname + '/public/'});
+// });
 
 
-app.use("/", indexRoutes);
+// app.use("/", indexRoutes);
 // app.use(jwt( app.get("jwt-validate"))); //after this middleware a token is required!
-app.use("/newnote.html", newNoteRoutes);
+app.use("/notes", newNoteRoutes);
 
 
 app.use(function (err, req, res, next) {

@@ -20,7 +20,7 @@ import { httpService } from './http-service.js'
 
 export class NoteService {
     async createNote(createDate, title, text, importance, dueDate) {
-        return await httpService.ajax("POST", "/newnote.html", { 
+        return await httpService.ajax("POST", "/notes/", { 
             createDate: createDate,
             title: title,
             text: text,
@@ -30,11 +30,13 @@ export class NoteService {
     }
 
     async getNotes() {
-        return await httpService.ajax("GET", "/", undefined);
+        return await httpService.ajax("GET", "/notes/", undefined);
     }
 
-    async getNote(id) {
-        return await httpService.ajax("GET", `/note/${id}`, undefined);
-    }
+    // async getNote(id) {
+    //     return await httpService.ajax("GET", `/note/${id}`, undefined);
+    // }
 
 }
+
+// export const noteService = new NoteService();

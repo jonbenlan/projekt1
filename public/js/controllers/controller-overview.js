@@ -1,12 +1,14 @@
-import { NoteService } from '../services/note-service.js'
+import { NoteService } from '../services/note-service.js';
+import { GetNotesData } from '../services/getData.js';
 
 export class ControllerOverview {
-    constructor(noteService) {
+    constructor() {
         this.optionsButtons         = document.querySelectorAll('.options-container-order-items button');
         this.filterButton           = document.querySelector('.options-container-filter-button');
         this.finishedInputs         = document.getElementsByClassName('js-input-done');
 
-        this.notesData              = NoteService;
+        this.notesData              = new NoteService().getNotes();
+        this.notesOrderingService   = new GetNotesData();
         this.noteTemplateCompiled   = Handlebars.compile(document.getElementById('note-item-template').innerHTML);
         this.noteListContainer      = document.querySelector('.list-container-items');
     }
@@ -18,17 +20,24 @@ export class ControllerOverview {
         })
     }
 
-    showNotes() {
-        this.noteListContainer.innerHTML = this.noteTemplateCompiled(this.notesData.getNotes);
+    async showNotes(notesData) {
+       
+        this.noteListContainer.innerHTML = this.noteTemplateCompiled({notes: await notesData });
         this.convertDates();
+    
     }
 
     initEventHandlers() {
         this.optionsButtons.forEach( (button) => {
+
             button.addEventListener('click', () => {
+
                 const orderOption = button.dataset.order;
-                this.newOrder(orderOption);
+                const sortedNotes = this.notesOrderingService.sortNotes(this.notesData, orderOption);
+                this.showNotes(sortedNotes);
+
             })
+
         });
         Array.from(this.finishedInputs).forEach( (input) => {
             input.addEventListener('click', () => {
@@ -42,17 +51,19 @@ export class ControllerOverview {
         });
     }
 
-    newOrder(orderOption) {
-        this.notesData.loadData();
-        this.notesData.sortNotes(orderOption); 
-        this.showNotes();
-    }
+    // newOrder(orderOption) {
+    //     this.notesData.loadData();
+    //     this.notesData.sortNotes(orderOption); 
+    //     this.showNotes();
+    // }
 
 
-    notesStart() {
-        this.notesData.getNotes;
-        this.showNotes();
+    async notesStart() {
+
+        this.showNotes(this.notesData);
         this.initEventHandlers();
         
     }
 }
+
+export const controllerOverview = new ControllerOverview();

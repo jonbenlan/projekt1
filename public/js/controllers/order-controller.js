@@ -13,11 +13,11 @@ async function renderOrder() {
     orderContainer.innerHTML = orderRenderer(await noteService.getNotes())
 }
 
-// orderContainer.addEventListener("click", async event => {
-//     if (event.target.classList.contains("js-delete")) {
-//         await orderService.deleteOrder(event.target.dataset.id);
-//         renderOrder()
-//     }
-// });
+orderContainer.addEventListener("click", async event => {
+    if (event.target.classList.contains("js-delete")) {
+        await orderService.deleteOrder(event.target.dataset.id);
+        renderOrder()
+    }
+});
 
 renderOrder();

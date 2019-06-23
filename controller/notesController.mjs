@@ -23,7 +23,8 @@ import {noteStore} from '../services/noteStore.mjs'
 export class NotesController {
 
     async getNotes(req, res) {
-        res.json((await noteStore.all(req) || []))
+        // console.log(res.json((await noteStore.all())));
+        res.json((await noteStore.all(req) || []));
     };
 
     async createNote(req, res) {

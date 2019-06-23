@@ -54,10 +54,10 @@ export class GetNotesData {
         }
     }
     
-    sortNotes(orderOption) {
-
-        this.storage = this.notes.sort(this.compareNotes(orderOption));
-        localStorage.setItem('notes', JSON.stringify(this.storage));
+    async sortNotes(notesData, orderOption) {
+      
+        this.notes = await notesData;
+        return this.notes.sort(this.compareNotes(orderOption));
 
     }
 

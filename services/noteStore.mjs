@@ -1,14 +1,5 @@
 import Datastore from 'nedb-promise'
 
-// export class Order {
-//     constructor(pizzaName, orderedBy) {
-//         this.orderedBy = orderedBy;
-//         this.pizzaName = pizzaName;
-//         this.orderDate = new Date();
-//         this.state = "OK";
-//     }
-// }
-
 export class Note {
     constructor(createDate, title, text, importance, dueDate) {
         // this.id = id;
@@ -63,7 +54,7 @@ export class NoteStore {
     // }
     
     async all() {
-        return this.db.find();
+        return await this.db.cfind({}).sort({ createDate: -1 }).exec();
     }
 }
 

@@ -1,15 +1,15 @@
-import {GetNotesData} from '../services/getData.js';
-import {ControllerOverview} from '../controllers/controller-overview.js/index.js.js';
+// import {GetNotesData} from '../services/getData.js';
+// import {controllerOverview} from '../controllers/controller-overview.js/index.js.js';
 
 
 class Bootstrapper {
-    static start() {
-console.log('ya');
+    static async start() {
 
-        const notesData = new GetNotesData();
-        new ControllerOverview(notesData).notesStart();
+        // const notesData = new GetNotesData();
+        await new ControllerOverview().notesStart();
     }
 }
 
 document.addEventListener('DOMContentLoaded', Bootstrapper.start());
 
+controllerOverview.notesStart();
