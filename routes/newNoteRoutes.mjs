@@ -5,9 +5,7 @@ import {notesController} from '../controller/notesController.mjs';
 
 router.get("/", notesController.getNotes.bind(notesController));
 router.post("/", notesController.createNote.bind(notesController));
-
-// router.get("/", notesController.getNotes.bind(notesController));
-// router.post("/", notesController.createNote.bind(notesController));
-// router.get("/:id/", ordersController.showOrder.bind(notesController));
+router.get("/:id/", notesController.showNote.bind(notesController));
+router.post("/:id/", notesController.updateNote.bind(notesController));
 
 export const newNoteRoutes = router;

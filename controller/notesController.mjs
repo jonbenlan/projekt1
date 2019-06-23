@@ -23,13 +23,23 @@ import {noteStore} from '../services/noteStore.mjs'
 export class NotesController {
 
     async getNotes(req, res) {
-        // console.log(res.json((await noteStore.all())));
         res.json((await noteStore.all(req) || []));
     };
 
     async createNote(req, res) {
         res.json(await noteStore.add(
             req.body.createDate,
+            req.body.title,
+            req.body.text,
+            req.body.importance,
+            req.body.dueDate
+        ));
+    };
+    
+    async updateNote(req, res) {
+        res.json(await noteStore.update(
+            req.body._id,
+            req.body.createDate,           
             req.body.title,
             req.body.text,
             req.body.importance,

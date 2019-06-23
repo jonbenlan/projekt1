@@ -28,14 +28,25 @@ export class NoteService {
             dueDate: dueDate 
         });
     }
+    
+    async updateNote(id, createDate, title, text, importance, dueDate) {
+        return await httpService.ajax("POST", `/notes/${id}`, {
+            _id: id,  
+            createDate: createDate,
+            title: title,
+            text: text,
+            importance: importance,
+            dueDate: dueDate 
+        });
+    }
 
     async getNotes() {
         return await httpService.ajax("GET", "/notes/", undefined);
     }
 
-    // async getNote(id) {
-    //     return await httpService.ajax("GET", `/note/${id}`, undefined);
-    // }
+    async getNote(id) {
+        return await httpService.ajax("GET", `/notes/${id}`, undefined);
+    }
 
 }
 

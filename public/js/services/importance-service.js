@@ -37,6 +37,7 @@ export class importanceService {
         this.importanceContainer = document.querySelector('.js-importance-listener');
         this.importanceInputs = this.importanceContainer.querySelectorAll("input[name='importance']");
         this.importance = document.getElementsByTagName('input:checked').value;
+        // this.checkedInput = this.importanceContainer.querySelector('input[value')
 
     }
 

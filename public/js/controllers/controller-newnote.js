@@ -1,4 +1,4 @@
-// import {Note} from './note.js';
+// import {Note} from '../services/note.js';
 // import {GetNotesData} from '../services/getData.js';
 // import {NewNote} from '../services/saveForm.js';
 // import {GetNotesData} from './handleImportance.js';
@@ -9,29 +9,34 @@ import { importanceService } from '../services/importance-service.js    '
 class ControllerNewNote {
     constructor() {
         this.noteService = new NoteService();
+        // this.newNote    = new Note();
+        this.noteID     = window.location.hash.substring(1);
 
         this.importanceService = new importanceService();
         this.importance = this.importanceService.importance;
         this.importanceContainer = this.importanceService.importanceContainer;
 
-        // this.title = document.getElementsByTagName('input[name="title"]').value;
-        // this.text = document.getElementsByTagName('textarea[name="text"]').value;
-        // this.dueDate = document.getElementsByTagName('input[name="date"]').value;
-        // this.dueDate = new Date(this.dueDate).getTime();
-        // this.createDate = Date.now();
+        this.title = document.getElementById('title');
+        this.text = document.getElementById('text');
+        this.dueDate = document.getElementById('dueDate');
+        this.dueDateValue = new Date(this.dueDate.value).getTime();
+        this.createDate = Date.now();
     }
     initEventHandlers() {
 
         document.querySelector('.note-controls button').addEventListener("click", async event => {
             event.preventDefault();
-                
-            this.title = document.querySelector('.note-content input[name="title"]').value;
-            this.text = document.querySelector('.note-content textarea[name="text"]').value;
-            this.dueDate = document.querySelector('.note-content input[name="date"]').value;
-            this.dueDate = new Date(this.dueDate).getTime();
-            this.createDate = Date.now();            
 
-            await this.noteService.createNote(this.createDate, this.title, this.text, this.importance, this.dueDate );
+            if (this.noteID) {
+
+                await this.noteService.updateNote(this.noteID, this.createDate, this.title.value, this.text.value, this.importance, this.dueDateValue);
+
+            } else {
+
+                await this.noteService.createNote(this.createDate, this.title.value, this.text.value, this.importance, this.dueDateValue);
+
+            }
+                      
             
             window.location.href = "/";
 
@@ -41,7 +46,21 @@ class ControllerNewNote {
             this.importanceService.highlight(this.importance);
         });
     }
+    async renderZeroState() {
+        if (this.noteID) {
+            console.log(await this.noteService.getNote(this.noteID))    ;
+            const note = await this.noteService.getNote(this.noteID);
+            this.title.value = note.title;
+            this.text.value = note.text;
+            this.importanceService.highlight(note.importance);
+            this.dueDate.value = new Date(Number(note.dueDate));            
+
+            console.log(this.dueDate.value);
+
+        }
+        this.initEventHandlers();
+    }
 }
 
 const controller = new ControllerNewNote();
-controller.initEventHandlers();
+controller.renderZeroState();

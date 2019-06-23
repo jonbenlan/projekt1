@@ -41,13 +41,6 @@ export class GetNotesData {
     }
 
 
-
-    
-    // compareNotes(n1, n2) {
-    //     // console.log(n2.orderOption - n1.orderOption);
-    //     return n2.importance - n1.importance;
-        
-    // }
     compareNotes(orderOption) {
         return (n1, n2) => {
             return n1[orderOption] - n2[orderOption];

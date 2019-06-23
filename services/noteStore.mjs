@@ -46,7 +46,13 @@ export class NoteStore {
     }
 
     async get(id) {
+        
         return await this.db.findOne({_id: id});
+    }
+    
+    async update(id, createDate, title, text, importance, dueDate) {
+        let updatedNote = new Note(createDate, title, text, importance, dueDate)
+        return await this.db.update({_id: id}, updatedNote, {});
     }
 
     // async all() {
