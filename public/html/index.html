@@ -93,12 +93,12 @@
                         </div>
                         <div class="list-container-item-done">
                             <form class="list-container-item-done-form">
-                                <input class="js-input-done" type="checkbox" data-note-id={{id}} id="noteID{{id}}">
+                                <input class="js-input-done" type="checkbox" data-note-id="{{_id}}" id="noteID{{_id}}">
                                 <label>Finished</label>
+                                <div class="list-container-item-done-date js-convert-date">
+                                    {{finishedDate}}
+                                </div>
                             </form>
-                            <div class="list-container-item-done-date js-convert-date">
-                                {{createDate}}
-                            </div>
                         </div>
                     </div>
                     <div class="list-container-item-middle-column grid-column">
@@ -116,7 +116,7 @@
                         </div>
                         <div class="list-container-item-content grid-row border-black">
                             <div class="list-container-item-content-textbox">
-                                <p>{{breaklines text}}</p>
+                                {{breaklines text}}
                             </div>
                             <div class="list-container-item-content-toggle">
                             </div>

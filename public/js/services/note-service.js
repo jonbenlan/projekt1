@@ -19,26 +19,35 @@ import { httpService } from './http-service.js'
 // }
 
 export class NoteService {
-    async createNote(createDate, title, text, importance, dueDate) {
+    async createNote(createDate, title, text, importance, dueDate, finishedDate) {
         return await httpService.ajax("POST", "/notes/", { 
             createDate: createDate,
             title: title,
             text: text,
             importance: importance,
-            dueDate: dueDate 
+            dueDate: dueDate,
+            finishedDate: finishedDate
         });
     }
-    
-    async updateNote(id, createDate, title, text, importance, dueDate) {
+
+    async updateNote(id, createDate, title, text, importance, dueDate, finishedDate) {
         return await httpService.ajax("POST", `/notes/${id}`, {
-            _id: id,  
+            _id: id,
             createDate: createDate,
             title: title,
             text: text,
             importance: importance,
-            dueDate: dueDate 
+            dueDate: dueDate,
+            finishedDate: finishedDate
         });
     }
+
+    // async updateFinished(id, finishedDate) {
+    //     return await httpService.ajax("POST", `/notes/${id}`, {
+    //         _id: id,
+    //         finishedDate: finishedDate
+    //     });
+    // }
 
     async getNotes() {
         return await httpService.ajax("GET", "/notes/", undefined);

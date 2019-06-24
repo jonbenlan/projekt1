@@ -11,5 +11,3 @@ class Bootstrapper {
 }
 
 document.addEventListener('DOMContentLoaded', Bootstrapper.start());
-
-controllerOverview.notesStart();

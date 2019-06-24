@@ -20,8 +20,8 @@ class ControllerNewNote {
         this.text = document.getElementById('text');
 
         this.dueDate = document.getElementById('dueDate');
-        this.dueDateValue = new Date(this.dueDate.value).getTime();
         this.createDate = Date.now();
+        this.finishedDate = '';
     }
     initEventHandlers() {
 
@@ -30,11 +30,11 @@ class ControllerNewNote {
 
             if (this.noteID) {
 
-                await this.noteService.updateNote(this.noteID, this.createDate, this.title.value, this.text.value, this.importance, this.dueDateValue);
+                await this.noteService.updateNote(this.noteID, this.createDate, this.title.value, this.text.value, this.importance, new Date(this.dueDate.value).getTime(), this.finishedDate);
 
             } else {
 
-                await this.noteService.createNote(this.createDate, this.title.value, this.text.value, this.importance, this.dueDateValue);
+                await this.noteService.createNote(this.createDate, this.title.value, this.text.value, this.importance, new Date(this.dueDate.value).getTime(), this.finishedDate);
 
             }
 
@@ -48,12 +48,13 @@ class ControllerNewNote {
     }
     async renderZeroState() {
         if (this.noteID) {
+
             const note = await this.noteService.getNote(this.noteID);
             this.title.value = note.title;
             this.text.value = note.text;
             this.importanceService.highlight(note.importance);
-            this.dueDate.value = new Date(Number(note.dueDate));            
-
+            this.dueDate.value = new Date(Number(note.dueDate));
+            this.finishedDate = note.finishedDate;
         }
         this.initEventHandlers();
     }
