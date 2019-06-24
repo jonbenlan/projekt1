@@ -18,8 +18,7 @@ class ControllerNewNote {
 
         this.title = document.getElementById('title');
         this.text = document.getElementById('text');
-        this.textValue = this.text.value.replace(/(?:\r\n|\r|\n)/g, '\\n');
-        
+
         this.dueDate = document.getElementById('dueDate');
         this.dueDateValue = new Date(this.dueDate.value).getTime();
         this.createDate = Date.now();
@@ -31,15 +30,14 @@ class ControllerNewNote {
 
             if (this.noteID) {
 
-                await this.noteService.updateNote(this.noteID, this.createDate, this.title.value, this.text.value.replace(/(?:\r\n|\r|\n)/g, '\\n'), this.importance, this.dueDateValue);
+                await this.noteService.updateNote(this.noteID, this.createDate, this.title.value, this.text.value, this.importance, this.dueDateValue);
 
             } else {
 
-                await this.noteService.createNote(this.createDate, this.title.value, this.textValue, this.importance, this.dueDateValue);
+                await this.noteService.createNote(this.createDate, this.title.value, this.text.value, this.importance, this.dueDateValue);
 
             }
-                      
-            
+
             window.location.href = "/";
 
         });
