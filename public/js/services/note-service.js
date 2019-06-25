@@ -41,16 +41,14 @@ export class NoteService {
             finishedDate: finishedDate
         });
     }
-
-    // async updateFinished(id, finishedDate) {
-    //     return await httpService.ajax("POST", `/notes/${id}`, {
-    //         _id: id,
-    //         finishedDate: finishedDate
-    //     });
-    // }
+    
 
     async getNotes() {
         return await httpService.ajax("GET", "/notes/", undefined);
+    }
+
+    async getUnfinished() {
+        return await httpService.ajax("GET", "/notes/unfinished", undefined);
     }
 
     async getNote(id) {

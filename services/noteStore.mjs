@@ -32,8 +32,8 @@ export class NoteStore {
         return await this.db.update({_id: id}, updatedNote, {});
     }
     
-    async all() {
-        return await this.db.cfind({}).sort({ createDate: -1 }).exec();
+    async all(filter={}) {
+        return await this.db.cfind(filter).sort({ createDate: -1 }).exec();
     }
 }
 

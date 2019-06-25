@@ -6,7 +6,7 @@ export class ControllerOverview {
         this.noteService = new NoteService();
         this.optionsButtons         = document.querySelectorAll('.options-container-order-items button');
         this.filterButton           = document.querySelector('.options-container-filter-button');
-        this.notesData              = new NoteService().getNotes();
+        this.notesData              = new NoteService().getUnfinished();
 
         this.notesOrderingService   = new GetNotesData();
         this.noteTemplateCompiled   = Handlebars.compile(document.getElementById('note-item-template').innerHTML);

@@ -4,7 +4,12 @@ import {noteStore} from '../services/noteStore.mjs'
 export class NotesController {
 
     async getNotes(req, res) {
-        res.json((await noteStore.all(req) || []));
+        res.json((await noteStore.all() || []));
+    };
+
+    async getUnfinished(req, res) {
+        const filter = { finishedDate: '' };
+        res.json((await noteStore.all(filter) || []));
     };
 
     async createNote(req, res) {
