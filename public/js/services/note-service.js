@@ -41,15 +41,15 @@ export class NoteService {
             finishedDate: finishedDate
         });
     }
-    
 
-    async getNotes() {
-        return await httpService.ajax("GET", "/notes/", undefined);
-    }
 
-    async getUnfinished() {
-        return await httpService.ajax("GET", "/notes/unfinished", undefined);
+    async getNotes(filter='') {
+        return await httpService.ajax("GET", `/notes/${filter}`, undefined);
     }
+    //
+    // async getUnfinished() {
+    //     return await httpService.ajax("GET", "/notes/unfinished", undefined);
+    // }
 
     async getNote(id) {
         return await httpService.ajax("GET", `/notes/${id}`, undefined);

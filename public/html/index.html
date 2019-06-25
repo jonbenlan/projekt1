@@ -39,17 +39,17 @@
                     <div class="options-container-order-column grid-column">
                         <div class="options-container-order-items grid-row">
                             <div class="options-container-order-item">                                
-                                <div class="options-container-filter-button">
+                                <div class="options-container-order-button">
                                     <button data-order="dueDate" class="border-black">By finish date</button>
                                 </div>
                             </div>
                             <div class="options-container-order-item">                                
-                                <div class="options-container-filter-button">
+                                <div class="options-container-order-button">
                                     <button data-order="createDate"class="border-black">By create date</button>
                                 </div>
                             </div>
                             <div class="options-container-order-item">
-                                <div class="options-container-filter-button">
+                                <div class="options-container-order-button">
                                     <button data-order="importance" class="border-black">By Importance</button>
                                 </div>
                             </div>
@@ -95,9 +95,11 @@
                             <form class="list-container-item-done-form">
                                 <input class="js-input-done" type="checkbox" data-note-id="{{_id}}" id="noteID{{_id}}">
                                 <label>Finished</label>
+                                {{#if finishedDate}}
                                 <div class="list-container-item-done-date js-convert-date">
                                     {{finishedDate}}
                                 </div>
+                                {{/if}}
                             </form>
                         </div>
                     </div>
