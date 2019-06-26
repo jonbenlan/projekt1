@@ -40,7 +40,7 @@
                         <div class="options-container-order-items grid-row">
                             <div class="options-container-order-item">                                
                                 <div class="options-container-order-button">
-                                    <button data-order="dueDate" class="border-black">By finish date</button>
+                                    <button data-order="dueDate" class="border-black">By due date</button>
                                 </div>
                             </div>
                             <div class="options-container-order-item">                                
@@ -88,14 +88,15 @@
         <div class="list-container-item">
                 <div class="list-container-item-row grid-row">
                     <div class="list-container-item-left-column grid-column">
-                        <div class="list-container-item-header js-convert-date">
-                            {{dueDate}}
+                        <div class="list-container-item-header">
+                            Due: <span class="js-convert-date">{{dueDate}}</span>
                         </div>
                         <div class="list-container-item-done">
                             <form class="list-container-item-done-form">
                                 <input class="js-input-done" type="checkbox" data-note-id="{{_id}}" id="noteID{{_id}}">
                                 <label>Finished</label>
                                 {{#if finishedDate}}
+                                on 
                                 <div class="list-container-item-done-date js-convert-date">
                                     {{finishedDate}}
                                 </div>
@@ -108,7 +109,7 @@
                             <div class="list-container-item-title">
                                 {{title}}
                             </div>
-                            <div class="list-container-item-importance">
+                            <div class="list-container-item-importance grid-row">
                                 {{#times importance}}
                                     <div class="importance-container">
                                         &#9889;

@@ -35,6 +35,16 @@
     margin-bottom: 1rem;
 }
 
+.list-container-item-content {
+    height: 50px;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.list-container-item-content .expand {
+    height: auto;
+}
+
 .list-container-item-content-toggle {
     position: relative;
 }
@@ -62,3 +72,4 @@
     border-color: black transparent transparent transparent;
 }
 
+.

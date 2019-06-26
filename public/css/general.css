@@ -2,11 +2,6 @@ button:focus {
     background-color: cyan;
 }
 
-input, textarea {
-    width: 100%;
-}
-
-
 .border-black {
     border: 1px solid black;
 }
