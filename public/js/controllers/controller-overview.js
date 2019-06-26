@@ -16,14 +16,21 @@ export class ControllerOverview {
 
     }
 
-    tickFinished() {
+    async tickFinished(notesData) {
+        let notesD = await notesData;
+        notesD.forEach( (note) => {
+            if (note.finishedDate) {
+                const input = this.noteListContainer.querySelector(`[data-note-id="${note._id}"]`);
+                input.checked = true;
+            }
+        })
 
     }
 
     convertDates() {
-        this.noteListContainer.querySelectorAll('.js-convert-date').forEach( (date) => {
+        this.noteListContainer.querySelectorAll('.js-convert-date').forEach( async (date) => {
             const convertedDate = new Date(Number(date.innerText));
-            date.innerHTML = convertedDate.toLocaleDateString();
+            date.innerHTML = await convertedDate.toLocaleDateString();
         })
     }
 
@@ -33,10 +40,9 @@ export class ControllerOverview {
 
         this.noteListContainer.innerHTML = this.noteTemplateCompiled({notes: await notesData });
 
-        await this.convertDates();
+        this.convertDates();
 
-        await this.tickFinished(notesData);
-
+        this.tickFinished(notesData);
 
     }
 
@@ -52,21 +58,23 @@ export class ControllerOverview {
             })
 
         });
-
-
-        Array.from(this.finishedInputs).forEach( (input) => {
-
-            input.addEventListener('click', async event => {
-
+        
+        Array.from(this.finishedInputs).forEach( async (input) => {
+            
+            await input.addEventListener('click', async () => {
+                
+                console.log(this.noteListContainer);
                 let finishedDate = '';
                 let noteID = input.dataset.noteId;
                 const note = await this.noteService.getNote(noteID);
-
+                
                 if (input.checked) {
 
                     finishedDate = new Date().getTime();
 
                 }
+
+                console.log(await this.finishedInputs);
 
                 await this.noteService.updateNote(noteID, note.createDate, note.title, note.text, note.importance, note.dueDate, finishedDate);
 
@@ -88,7 +96,7 @@ export class ControllerOverview {
 
             }
 
-
+            console.log(this.finishedInputs)
         });
     }
 
@@ -98,7 +106,7 @@ export class ControllerOverview {
     async notesStart() {
 
         await this.showNotes(this.noteService.getNotes('unfinished'));
-        this.initEventHandlers();
+        await this.initEventHandlers();
         
     }
 }
