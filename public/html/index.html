@@ -93,7 +93,7 @@
                         </div>
                         <div class="list-container-item-done">
                             <form class="list-container-item-done-form">
-                                <input class="js-input-done" type="checkbox" data-note-id="{{_id}}" id="noteID{{_id}}">
+                                <input {{#if finishedDate}}checked{{/if}} class="js-input-done" type="checkbox" data-note-id="{{_id}}" id="noteID{{_id}}">
                                 <label>Finished</label>
                                 {{#if finishedDate}}
                                 <div class="list-container-item-done-date js-convert-date">
