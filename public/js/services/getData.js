@@ -41,23 +41,16 @@ export class GetNotesData {
     }
 
 
-
-    
-    // compareNotes(n1, n2) {
-    //     // console.log(n2.orderOption - n1.orderOption);
-    //     return n2.importance - n1.importance;
-        
-    // }
     compareNotes(orderOption) {
         return (n1, n2) => {
             return n1[orderOption] - n2[orderOption];
         }
     }
     
-    sortNotes(orderOption) {
-
-        this.storage = this.notes.sort(this.compareNotes(orderOption));
-        localStorage.setItem('notes', JSON.stringify(this.storage));
+    async sortNotes(notesData, orderOption) {
+      
+        this.notes = await notesData;
+        return this.notes.sort(this.compareNotes(orderOption));
 
     }
 

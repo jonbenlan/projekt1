@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/grid.css">
     <link rel="stylesheet" type="text/css" href="css/general.css">
     <link rel="stylesheet" type="text/css" href="css/overview.css">
+    
 </head>
 <body>
     <div class="overview wrapper">
@@ -38,17 +39,17 @@
                     <div class="options-container-order-column grid-column">
                         <div class="options-container-order-items grid-row">
                             <div class="options-container-order-item">                                
-                                <div class="options-container-filter-button">
+                                <div class="options-container-order-button">
                                     <button data-order="dueDate" class="border-black">By finish date</button>
                                 </div>
                             </div>
                             <div class="options-container-order-item">                                
-                                <div class="options-container-filter-button">
+                                <div class="options-container-order-button">
                                     <button data-order="createDate"class="border-black">By create date</button>
                                 </div>
                             </div>
                             <div class="options-container-order-item">
-                                <div class="options-container-filter-button">
+                                <div class="options-container-order-button">
                                     <button data-order="importance" class="border-black">By Importance</button>
                                 </div>
                             </div>
@@ -75,12 +76,15 @@
             </div>
         </div>
     </div>   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js" integrity="sha256-qlku5J3WO/ehJpgXYoJWC2px3+bZquKChi4oIWrAKoI=" crossorigin="anonymous"></script>
-    <script async src="js/handlebars.js"></script>
-    <script async src="js/bootstrapper-overview.js" type="module" defer></script>
+
+    <script src="../libs/handlebars-v4.0.5.js" defer></script>
+    <script src="../js/utils/handlebars-helpers.js" defer></script>
+    
+    <script src="../js/utils/handlebars.js" defer></script>
+    <script src="../js/bootstrapper/bootstrapper-overview.js" type="module" defer></script>
  
     <script id="note-item-template" type="text/x-handlebars-template">
-        {{#each this }}
+        {{#each notes }}
         <div class="list-container-item">
                 <div class="list-container-item-row grid-row">
                     <div class="list-container-item-left-column grid-column">
@@ -89,12 +93,14 @@
                         </div>
                         <div class="list-container-item-done">
                             <form class="list-container-item-done-form">
-                                <input class="js-input-done" type="checkbox" data-note-id={{id}} id="noteID{{id}}">
+                                <input class="js-input-done" type="checkbox" data-note-id="{{_id}}" id="noteID{{_id}}">
                                 <label>Finished</label>
+                                {{#if finishedDate}}
+                                <div class="list-container-item-done-date js-convert-date">
+                                    {{finishedDate}}
+                                </div>
+                                {{/if}}
                             </form>
-                            <div class="list-container-item-done-date js-convert-date">
-                                {{createDate}}
-                            </div>
                         </div>
                     </div>
                     <div class="list-container-item-middle-column grid-column">
@@ -112,17 +118,17 @@
                         </div>
                         <div class="list-container-item-content grid-row border-black">
                             <div class="list-container-item-content-textbox">
-                                {{text}}     
+                                {{breaklines text}}
                             </div>
                             <div class="list-container-item-content-toggle">
                             </div>
                         </div>
                     </div>
                     <div class="list-container-item-right-column grid-column">
-                        <div class="list-container-item-button">
-                            <button class="border-black block-button">
-                                Edith
-                            </button>
+                        <div class="list-container-item-button">                            
+                            <form action="newnote.html#{{_id}}">
+                                <input class="button-standard border-black" type="submit" value="edit">
+                            </form>
                         </div>
                     </div>
                 </div>

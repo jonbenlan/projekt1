@@ -27,7 +27,7 @@
                             <label>Beschreibung</label>
                         </div>
                         <div class="note-content-input">
-                            <textarea name="text"></textarea>
+                            <textarea name="text" id="text"></textarea>
                         </div>
                     </div>
                     <div class="note-content-importance grid-row">
@@ -64,7 +64,7 @@
                             <label>Erledigt bis</lagbel>
                         </div>
                         <div class="note-content-input">
-                            <input name="date" type="date">
+                            <input id="dueDate" name="date" type="date">
                         </div>
                     </div>
                 </div>
@@ -75,7 +75,9 @@
                                 <button class="button-standard border-black" type="submit">Speichern</button>
                             </div>
                             <div class="note-controls-item-lower">
-                                <button class="button-standard border-black">Cancel</button>
+                                <a href="/">
+                                    <button class="button-standard border-black" type="button">Cancel</button>
+                                </a>
                             </div>
                         </div>
                     </form>
@@ -83,7 +85,7 @@
             </div>
         </div>
     </div>
-    <script src="js/controller-newnote.js" type="module" defer></script>
-    <script src="js/handleImportance.js"></script>
+    <script src="../js/services/handleImportance.js" type="script" defer></script>
+    <script src="../js/controllers/controller-newnote.js" type="module" defer></script>
 </body>
 </html>
