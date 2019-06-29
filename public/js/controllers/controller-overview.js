@@ -77,6 +77,10 @@ export class ControllerOverview {
 
     initEventHandlers() {
 
+        this.styleChanger.addEventListener('change', () => {
+           document.body.classList.toggle('newstyle'); 
+        });
+
         Array.from(this.noteShowMore).forEach( async (toggle) => {
   
             await toggle.addEventListener('click', async () => {

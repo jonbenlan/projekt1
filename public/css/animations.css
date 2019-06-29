@@ -1,0 +1,11 @@
+@keyframes glow {
+    0% {background: white}
+    50% {background: black}
+    100% {background: white}
+}
+
+@keyframes reveal {
+    0% {transform: translateY(0)}
+    50% {transform: translateY(5vH)}
+    100% {transform: translateY(100vH)}
+}
