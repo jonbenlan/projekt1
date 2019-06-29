@@ -13,25 +13,50 @@ export class ControllerOverview {
         this.noteTemplateCompiled   = Handlebars.compile(document.getElementById('note-item-template').innerHTML);
         this.noteListContainer      = document.querySelector('.list-container-items');
         this.finishedInputs         = document.getElementsByClassName('js-input-done');
+        this.noteShowMore           = document.getElementsByClassName('list-container-item-content-toggle');
+    }
 
+    async handleShowMoreButtons() {
+    
+        Array.from(this.noteShowMore).forEach( async (toggle) => {
+            console.log(toggle.clientHeight);
+            
+            if (toggle.clientHeight < 50) {
+    
+                await toggle.classList.add('hide');
+    
+            }
+    
+        });
+    
     }
 
     async tickFinished(notesData) {
+  
         let notesD = await notesData;
-        notesD.forEach( (note) => {
+  
+        await notesD.forEach( (note) => {
+  
             if (note.finishedDate) {
+  
                 const input = this.noteListContainer.querySelector(`[data-note-id="${note._id}"]`);
+  
                 input.checked = true;
+  
             }
-        })
+        });
 
     }
 
-    convertDates() {
-        this.noteListContainer.querySelectorAll('.js-convert-date').forEach( async (date) => {
+    async convertDates() {
+     
+        await this.noteListContainer.querySelectorAll('.js-convert-date').forEach( async (date) => {
+     
             const convertedDate = new Date(Number(date.innerText));
+     
             date.innerHTML = await convertedDate.toLocaleDateString();
-        })
+     
+        });
     }
 
     async showNotes(notesData) {
@@ -44,9 +69,26 @@ export class ControllerOverview {
 
         this.tickFinished(notesData);
 
+        this.handleShowMoreButtons();
+
+        console.log(this.noteShowMore);
+
     }
 
     initEventHandlers() {
+
+        Array.from(this.noteShowMore).forEach( async (toggle) => {
+  
+            await toggle.addEventListener('click', async () => {
+
+                const toggleContainer = toggle.closest('.list-container-item-content');
+
+                toggleContainer.classList.toggle('expand');
+
+            });
+
+        });
+        
         this.optionsButtons.forEach( (button) => {
 
             button.addEventListener('click', () => {
@@ -56,14 +98,12 @@ export class ControllerOverview {
                 this.showNotes(sortedNotes);
 
             })
-
         });
         
         Array.from(this.finishedInputs).forEach( async (input) => {
             
-            await input.addEventListener('click', async () => {
+            input.addEventListener('click', async () => {
                 
-                console.log(this.noteListContainer);
                 let finishedDate = '';
                 let noteID = input.dataset.noteId;
                 const note = await this.noteService.getNote(noteID);
@@ -74,29 +114,26 @@ export class ControllerOverview {
 
                 }
 
-                console.log(await this.finishedInputs);
-
                 await this.noteService.updateNote(noteID, note.createDate, note.title, note.text, note.importance, note.dueDate, finishedDate);
 
             })
         });
 
 
-        this.filterButton.addEventListener('click', async event => {
+        this.filterButton.addEventListener('click', () => {
 
             event.target.classList.toggle('js-visited');
 
             if (event.target.classList.contains('js-visited')) {
 
-                await this.showNotes(this.noteService.getNotes());
+                this.showNotes(this.noteService.getNotes());
 
             } else {
 
-                await this.showNotes(this.noteService.getNotes('unfinished'));
+                this.showNotes(this.noteService.getNotes('unfinished'));
 
             }
 
-            console.log(this.finishedInputs)
         });
     }
 
@@ -106,7 +143,7 @@ export class ControllerOverview {
     async notesStart() {
 
         await this.showNotes(this.noteService.getNotes('unfinished'));
-        await this.initEventHandlers();
+        this.initEventHandlers();
         
     }
 }
