@@ -12,14 +12,16 @@ export class ControllerOverview {
         this.notesOrderingService   = new GetNotesData();
         this.noteTemplateCompiled   = Handlebars.compile(document.getElementById('note-item-template').innerHTML);
         this.noteListContainer      = document.querySelector('.list-container-items');
+        this.styleChanger           = document.querySelector('.header-container-dropdown');
+
         this.finishedInputs         = document.getElementsByClassName('js-input-done');
         this.noteShowMore           = document.getElementsByClassName('list-container-item-content-toggle');
+
     }
 
     async handleShowMoreButtons() {
     
         Array.from(this.noteShowMore).forEach( async (toggle) => {
-            console.log(toggle.clientHeight);
             
             if (toggle.clientHeight < 50) {
     
@@ -71,8 +73,6 @@ export class ControllerOverview {
 
         this.handleShowMoreButtons();
 
-        console.log(this.noteShowMore);
-
     }
 
     initEventHandlers() {
@@ -120,21 +120,23 @@ export class ControllerOverview {
         });
 
 
-        this.filterButton.addEventListener('click', () => {
+        this.filterButton.addEventListener('click', async () => {
 
             event.target.classList.toggle('js-visited');
 
             if (event.target.classList.contains('js-visited')) {
 
-                this.showNotes(this.noteService.getNotes());
+                await this.showNotes(this.noteService.getNotes());
 
             } else {
 
-                this.showNotes(this.noteService.getNotes('unfinished'));
+                await this.showNotes(this.noteService.getNotes('unfinished'));
 
             }
 
-        });
+            await this.initEventHandlers();
+
+        }, {once: true});
     }
 
 

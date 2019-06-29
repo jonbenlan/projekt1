@@ -39,12 +39,12 @@
     max-height: 50px;
     padding: 10px;
     overflow: hidden;
-    transition: max-height 1s ease;
+    transition: all 1s ease;
 }
 
 
 .list-container-item-content.expand {
-    max-height: 100vH;
+    max-height: 200px;
 }
 
 .list-container-item-content.expand .list-container-item-content-toggle::before,
