@@ -1,6 +1,7 @@
 import { NoteService } from '../services/note-service.js';
 import { GetNotesData } from '../services/getData.js';
 
+
 export class ControllerOverview {
     constructor() {
         this.noteService = new NoteService();
@@ -78,7 +79,9 @@ export class ControllerOverview {
     initEventHandlers() {
 
         this.styleChanger.addEventListener('change', () => {
+            
            document.body.classList.toggle('newstyle'); 
+        
         });
 
         Array.from(this.noteShowMore).forEach( async (toggle) => {
@@ -98,7 +101,9 @@ export class ControllerOverview {
             button.addEventListener('click', () => {
 
                 const orderOption = button.dataset.order;
+
                 const sortedNotes = this.notesOrderingService.sortNotes(this.notesData, orderOption);
+
                 this.showNotes(sortedNotes);
 
             })
