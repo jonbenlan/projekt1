@@ -114,6 +114,7 @@ body.newstyle .options-container button {
 
 body.newstyle .list-container-item {
     background: white;
+    border-radius: 42px;
 }
 
 body.newstyle .list-container-items {

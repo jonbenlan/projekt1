@@ -23,7 +23,6 @@ export class NoteStore {
     }
 
     async get(id) {
-        
         return await this.db.findOne({_id: id});
     }
     

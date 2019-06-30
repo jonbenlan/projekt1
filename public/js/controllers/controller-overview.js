@@ -1,18 +1,17 @@
 import { NoteService } from '../services/note-service.js';
-import { GetNotesData } from '../services/getData.js';
-
 
 export class ControllerOverview {
+
     constructor() {
-        this.noteService = new NoteService();
+
+        this.notesData              = '';
+        this.noteService            = new NoteService();
+
+        this.noteListContainer      = document.querySelector('.list-container-items');
+        this.noteTemplateCompiled   = Handlebars.compile(document.getElementById('note-item-template').innerHTML);
+
         this.optionsButtons         = document.querySelectorAll('.options-container-order-items button');
         this.filterButton           = document.querySelector('.options-container-filter-button');
-        this.noteService            = new NoteService();
-        this.notesData              = '';
-
-        this.notesOrderingService   = new GetNotesData();
-        this.noteTemplateCompiled   = Handlebars.compile(document.getElementById('note-item-template').innerHTML);
-        this.noteListContainer      = document.querySelector('.list-container-items');
         this.styleChanger           = document.querySelector('.header-container-dropdown');
 
         this.finishedInputs         = document.getElementsByClassName('js-input-done');
@@ -102,7 +101,7 @@ export class ControllerOverview {
 
                 const orderOption = button.dataset.order;
 
-                const sortedNotes = this.notesOrderingService.sortNotes(this.notesData, orderOption);
+                const sortedNotes = this.noteService.sortNotes(this.notesData, orderOption);
 
                 this.showNotes(sortedNotes);
 
@@ -154,6 +153,7 @@ export class ControllerOverview {
     async notesStart() {
 
         await this.showNotes(this.noteService.getNotes('unfinished'));
+        
         this.initEventHandlers();
         
     }

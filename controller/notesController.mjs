@@ -1,6 +1,5 @@
 import {noteStore} from '../services/noteStore.mjs'
 
-
 export class NotesController {
 
     async getNotes(req, res) {
@@ -34,7 +33,6 @@ export class NotesController {
             req.body.finishedDate
         ));
     };
-
 
     async showNote(req, res) {
         res.json(await noteStore.get(req.params.id));

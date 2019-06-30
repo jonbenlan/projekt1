@@ -78,69 +78,62 @@
         </div>
     </div>   
 
-    <script src="../libs/handlebars-v4.0.5.js" defer></script>
-    <script src="../js/utils/handlebars-helpers.js" defer></script>
-    
+    <script src="../libs/handlebars-v4.0.5.js" defer></script>    
     <script src="../js/utils/handlebars.js" defer></script>
     <script src="../js/bootstrapper/bootstrapper-overview.js" type="module" defer></script>
  
     <script id="note-item-template" type="text/x-handlebars-template">
         {{#each notes }}
         <div class="list-container-item">
-                <div class="list-container-item-row grid-row">
-                    <div class="list-container-item-left-column grid-column">
-                        <div class="list-container-item-header">
-                            Due: <span class="js-convert-date">{{dueDate}}</span>
+            <div class="list-container-item-row grid-row">
+                <div class="list-container-item-left-column grid-column">
+                    <div class="list-container-item-header">
+                        Due: <span class="js-convert-date">{{dueDate}}</span>
+                    </div>
+                    <div class="list-container-item-done">
+                        <form class="list-container-item-done-form">
+                            <input class="js-input-done" type="checkbox" data-note-id="{{_id}}" id="{{_id}}">
+                            <label for="{{_id}}">Finished</label>
+                            {{#if finishedDate}}
+                            on 
+                            <div class="list-container-item-done-date js-convert-date">
+                                {{finishedDate}}
+                            </div>
+                            {{/if}}
+                        </form>
+                    </div>
+                </div>
+                <div class="list-container-item-middle-column grid-column">
+                    <div class="list-container-item-header grid-row">
+                        <div class="list-container-item-title">
+                            {{title}}
                         </div>
-                        <div class="list-container-item-done">
-                            <form class="list-container-item-done-form">
-                                <input class="js-input-done" type="checkbox" data-note-id="{{_id}}" id="{{_id}}">
-                                <label for="{{_id}}">Finished</label>
-                                {{#if finishedDate}}
-                                on 
-                                <div class="list-container-item-done-date js-convert-date">
-                                    {{finishedDate}}
+                        <div class="list-container-item-importance grid-row">
+                            {{#times importance}}
+                                <div class="importance-container">
+                                    &#9889;
                                 </div>
-                                {{/if}}
-                            </form>
+                            {{/times}}
                         </div>
                     </div>
-                    <div class="list-container-item-middle-column grid-column">
-                        <div class="list-container-item-header grid-row">
-                            <div class="list-container-item-title">
-                                {{title}}
-                            </div>
-                            <div class="list-container-item-importance grid-row">
-                                {{#times importance}}
-                                    <div class="importance-container">
-                                        &#9889;
-                                    </div>
-                                {{/times}}
-                            </div>
+                    <div class="list-container-item-content grid-row border-black">
+                        <div class="list-container-item-content-textbox">
+                            {{breaklines text}}
                         </div>
-                        <div class="list-container-item-content grid-row border-black">
-                            <div class="list-container-item-content-textbox">
-                                {{breaklines text}}
-                            </div>
-                            <div class="list-container-item-content-toggle">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-container-item-right-column grid-column">
-                        <div class="list-container-item-button">                            
-                            <form action="newnote.html#{{_id}}">
-                                <input class="button-standard border-black" type="submit" value="edit">
-                            </form>
+                        <div class="list-container-item-content-toggle">
                         </div>
                     </div>
                 </div>
+                <div class="list-container-item-right-column grid-column">
+                    <div class="list-container-item-button">                            
+                        <form action="newnote.html#{{_id}}">
+                            <input class="button-standard border-black" type="submit" value="edit">
+                        </form>
+                    </div>
+                </div>
             </div>
-            {{/each}}
-      </script>
-<!--       
-      <script async src="js/controller-overview.js"></script>
-      <script async src="js/getData.js"></script> -->
-
-
+        </div>
+        {{/each}}
+    </script>
 </body>
 </html>
