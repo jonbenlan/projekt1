@@ -113,7 +113,9 @@ export class ControllerOverview {
             input.addEventListener('click', async () => {
                 
                 let finishedDate = '';
+
                 let noteID = input.dataset.noteId;
+                
                 const note = await this.noteService.getNote(noteID);
                 
                 if (input.checked) {

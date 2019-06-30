@@ -17,25 +17,60 @@ class ControllerNewNote {
         this.createDate = Date.now();
         this.finishedDate = '';
 
+        this.errorMessage = document.querySelector('.error-message');
+
+    }
+
+    toggleErrors() {
+        this.title.classList.toggle('error-inputs');
+        this.text.classList.toggle('error-inputs');
+        this.errorMessage.classList.toggle('show');
+    }
+
+    async validateForm() {
+        console.log(this.title.value);
+
+        if (!this.title.value && !this.text.value) {
+            await this.toggleErrors();
+            // return await false;
+        }
+
+        // return true;
     }
 
     initEventHandlers() {
+
+        // Array.from(document.getElementsByClassName('error-inputs')).forEach( (errorInput) => {
+        //     console.log(errorInput); 
+        //     errorInput.addEventListener('focus', () => {
+        //             this.toggleErrors();
+        //     }, {once: true});
+        // });
 
         document.querySelector('.note-controls button').addEventListener("click", async event => {
             
             event.preventDefault();
 
-            if (this.noteID) {
+            await this.validateForm();
 
-                await this.noteService.updateNote(this.noteID, this.createDate, this.title.value, this.text.value, this.importance, new Date(this.dueDate.value).getTime(), this.finishedDate);
+            console.log(await this.validateForm());
 
-            } else {
+            // if (await this.validateForm()) {
 
-                await this.noteService.createNote(this.createDate, this.title.value, this.text.value, this.importance, new Date(this.dueDate.value).getTime(), this.finishedDate);
 
-            }
+                if (this.noteID) {
 
-            window.location.href = "/";
+                    await this.noteService.updateNote(this.noteID, this.createDate, this.title.value, this.text.value, this.importance, new Date(this.dueDate.value).getTime(), this.finishedDate);
+
+                } else {
+
+                    await this.noteService.createNote(this.createDate, this.title.value, this.text.value, this.importance, new Date(this.dueDate.value).getTime(), this.finishedDate);
+
+                }
+
+                // window.location.href = "/";
+
+            // }
 
         });
 

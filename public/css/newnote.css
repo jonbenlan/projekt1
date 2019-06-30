@@ -61,3 +61,16 @@ input[type="radio"] {
     width: 100%;
     margin: 0;
 }
+
+.error-inputs {
+    border: 2px solid red;
+}
+
+.error-message {
+    display: none;
+    color: red;
+}
+
+.error-message.show {
+    display: block;
+}

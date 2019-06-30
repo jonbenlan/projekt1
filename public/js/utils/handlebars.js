@@ -10,3 +10,13 @@ Handlebars.registerHelper('breaklines', function(text) {
     text = text.replace(/(\r\n|\n|\r)/gm, '<br>');
     return new Handlebars.SafeString(text);
 });
+
+//TODO: will I use this?
+Handlebars.registerHelper('formatDate', function (data) {
+    let options = {
+        year: 'numeric', month: 'numeric', day: 'numeric',
+        hour: 'numeric', minute: 'numeric', second: 'numeric',
+        hour12: true
+    };
+    return new Date(data).toLocaleString('de-DE', options); //ES6
+});
