@@ -28,10 +28,15 @@ class ControllerNewNote {
     }
 
     async validateForm() {
-        console.log(this.title.value);
-
+        
+        this.title.value = this.title.value.trim();
+        // this.text.value = this.text.value.replace(/\s/g, '');
+        !str.replace(/\s+/, '').length
+        
+        console.log(typeof this.title.value);
+        
         if (!this.title.value && !this.text.value) {
-            await this.toggleErrors();
+            this.toggleErrors();
             // return await false;
         }
 
