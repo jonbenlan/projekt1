@@ -18,8 +18,10 @@ class ControllerNewNote {
         this.finishedDate = '';
 
         this.errorMessage = document.querySelector('.error-message');
+        // this.errors = [];
 
     }
+
 
     toggleErrors() {
         this.title.classList.toggle('error-inputs');
@@ -31,33 +33,15 @@ class ControllerNewNote {
 
         if (!this.title.value && !this.text.value) {
             this.toggleErrors();
+            // this.errors = Array.from(document.getElementsByClassName('error-inputs'));
             return false;
         }
+        // this.errors = [];
         return true;
 
-        
-        // this.title.value = this.title.value.trim();
-        // // this.text.value = this.text.value.replace(/\s/g, '');
-        // !str.replace(/\s+/, '').length
-        //
-        // console.log(typeof this.title.value);
-        //
-        // if (!this.title.value && !this.text.value) {
-        //     this.toggleErrors();
-        //     // return await false;
-        // }
-
-        // return true;
     }
 
     initEventHandlers() {
-
-        // Array.from(document.getElementsByClassName('error-inputs')).forEach( (errorInput) => {
-        //     console.log(errorInput); 
-        //     errorInput.addEventListener('focus', () => {
-        //             this.toggleErrors();
-        //     }, {once: true});
-        // });
 
         document.querySelector('.note-controls button').addEventListener("click", async event => {
             
@@ -76,9 +60,9 @@ class ControllerNewNote {
 
                     await this.noteService.createNote(this.createDate, this.title.value, this.text.value, this.importance, new Date(this.dueDate.value).getTime(), this.finishedDate);
 
-                    window.location.href = "/";
-
                 }
+
+                window.location.href = "/";
 
             } else {
                 console.log('nongut');
