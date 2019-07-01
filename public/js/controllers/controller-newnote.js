@@ -27,18 +27,25 @@ class ControllerNewNote {
         this.errorMessage.classList.toggle('show');
     }
 
-    async validateForm() {
-        
-        this.title.value = this.title.value.trim();
-        // this.text.value = this.text.value.replace(/\s/g, '');
-        !str.replace(/\s+/, '').length
-        
-        console.log(typeof this.title.value);
-        
+    validateForm() {
+
         if (!this.title.value && !this.text.value) {
             this.toggleErrors();
-            // return await false;
+            return false;
         }
+        return true;
+
+        
+        // this.title.value = this.title.value.trim();
+        // // this.text.value = this.text.value.replace(/\s/g, '');
+        // !str.replace(/\s+/, '').length
+        //
+        // console.log(typeof this.title.value);
+        //
+        // if (!this.title.value && !this.text.value) {
+        //     this.toggleErrors();
+        //     // return await false;
+        // }
 
         // return true;
     }
@@ -56,11 +63,9 @@ class ControllerNewNote {
             
             event.preventDefault();
 
-            await this.validateForm();
+            if (this.validateForm()) {
 
-            console.log(await this.validateForm());
-
-            // if (await this.validateForm()) {
+                console.log('gut');
 
 
                 if (this.noteID) {
@@ -71,11 +76,16 @@ class ControllerNewNote {
 
                     await this.noteService.createNote(this.createDate, this.title.value, this.text.value, this.importance, new Date(this.dueDate.value).getTime(), this.finishedDate);
 
+                    window.location.href = "/";
+
                 }
 
-                // window.location.href = "/";
+            } else {
+                console.log('nongut');
 
-            // }
+            }
+
+
 
         });
 
