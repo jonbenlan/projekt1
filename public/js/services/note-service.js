@@ -2,7 +2,7 @@ import { httpService } from './http-service.js'
 
 export class NoteService {
 
-    async createNote(createDate, title, text, importance, dueDate, finishedDate) {
+    async createNote(createDate, title, text, importance = 0, dueDate, finishedDate) {
 
         return await httpService.ajax("POST", "/notes/", {
 
@@ -49,9 +49,9 @@ export class NoteService {
     async compareNotes(orderOption) {
     
         return (n1, n2) => {
-    
+
             return n1[orderOption] - n2[orderOption];
-    
+
         }
     
     }
@@ -59,8 +59,16 @@ export class NoteService {
     async sortNotes(notesData, orderOption) {
       
         this.notes = await notesData;
-    
-        return this.notes.sort(await this.compareNotes(orderOption));
+        
+        let sortedNotes = this.notes.sort(await this.compareNotes(orderOption));
+
+        if (orderOption === 'importance') {
+
+            sortedNotes.reverse();
+
+        }
+
+        return sortedNotes;
 
     }
 
