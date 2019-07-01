@@ -50,14 +50,33 @@ export class ControllerOverview {
 
     }
 
-    async convertDates() {
+    async manipulateDates() {
      
         await this.noteListContainer.querySelectorAll('.js-convert-date').forEach( async (date) => {
-     
-            const convertedDate = new Date(Number(date.innerText));
-     
-            date.innerHTML = await convertedDate.toLocaleDateString();
-     
+
+            let dueDate;
+
+            if (!date.innerText) {
+
+                dueDate = 'undefined';
+
+            } else {
+
+                let today = new Date();
+
+                today = today.toLocaleDateString();
+
+                dueDate = new Date(Number(date.innerText));
+                dueDate = dueDate.toLocaleDateString();
+
+                if (today === dueDate) {
+                    dueDate = 'heute';
+                }
+
+            }
+
+            date.innerHTML = await dueDate;
+
         });
     }
 
@@ -67,7 +86,7 @@ export class ControllerOverview {
 
         this.noteListContainer.innerHTML = this.noteTemplateCompiled({notes: await notesData });
 
-        this.convertDates();
+        this.manipulateDates();
 
         this.tickFinished(notesData);
 
