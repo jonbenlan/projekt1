@@ -11,6 +11,7 @@ class ControllerNewNote {
 
         this.importance = this.importanceService.importance;
         this.importanceContainer = this.importanceService.importanceContainer;
+        this.required = document.querySelectorAll('.js-required');
         this.title = document.getElementById('title');
         this.text = document.getElementById('text');
         this.dueDate = document.getElementById('dueDate');
@@ -18,30 +19,49 @@ class ControllerNewNote {
         this.finishedDate = '';
 
         this.errorMessage = document.querySelector('.error-message');
-        // this.errors = [];
 
     }
 
 
     toggleErrors() {
+
         this.title.classList.toggle('error-inputs');
         this.text.classList.toggle('error-inputs');
         this.errorMessage.classList.toggle('show');
+
     }
 
     validateForm() {
 
         if (!this.title.value && !this.text.value) {
+
             this.toggleErrors();
-            // this.errors = Array.from(document.getElementsByClassName('error-inputs'));
             return false;
+
         }
-        // this.errors = [];
+        
         return true;
 
     }
 
     initEventHandlers() {
+
+
+        [...this.required].forEach( (input) => {
+
+            input.addEventListener('click', () => {
+
+                if (input.classList.contains('error-inputs')) {
+
+                    this.toggleErrors();
+
+                }
+
+            });
+
+        });
+
+
 
         document.querySelector('.note-controls button').addEventListener("click", async event => {
             
