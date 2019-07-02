@@ -104,6 +104,10 @@
     border-color: black transparent transparent transparent;
 }
 
+.list-container-items-reveal {
+    display: none;
+}
+
 body.newstyle {
     background: black;
 }
@@ -117,15 +121,20 @@ body.newstyle .list-container-item {
     border-radius: 42px;
 }
 
-body.newstyle .list-container-items {
+body.newstyle .list-container-column {
     position: relative;
 }
 
-body.newstyle .list-container-items::after {
-    height: 100vH;
+body.newstyle .list-container-items-reveal {
+    position: absolute;
+    bottom: 0;
+    display: block;
+    height: 0;
     width: 100%;
-    transform: translateY(100vH);
     background: black;
     z-index: 10;
+}
+
+.animation-reveal {
     animation: reveal 3s;
 }

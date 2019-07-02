@@ -17,6 +17,8 @@ export class ControllerOverview {
         this.finishedInputs         = document.getElementsByClassName('js-input-done');
         this.noteShowMore           = document.getElementsByClassName('list-container-item-content-toggle');
 
+        this.newstyle               = document.getElementsByClassName('newstyle');
+
     }
 
     async handleShowMoreButtons() {
@@ -81,6 +83,16 @@ export class ControllerOverview {
     }
 
     async showNotes(notesData) {
+
+        if (this.newstyle.length) {
+
+            const revealer = this.newstyle[0].querySelector('.list-container-items-reveal');
+
+            revealer.classList.remove('animation-reveal');
+            void revealer.offsetWidth;
+            revealer.classList.add('animation-reveal');
+
+        }
 
         this.notesData = notesData;
 

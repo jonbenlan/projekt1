@@ -39,7 +39,7 @@ class ControllerNewNote {
             return false;
 
         }
-        
+
         return true;
 
     }

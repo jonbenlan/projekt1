@@ -4,8 +4,9 @@
     100% {background: white}
 }
 
+
 @keyframes reveal {
-    0% {transform: translateY(0)}
-    50% {transform: translateY(5vH)}
-    100% {transform: translateY(100vH)}
+    0% {height: 100%}
+    50% {height: 95%}
+    100% {height: 0}
 }
